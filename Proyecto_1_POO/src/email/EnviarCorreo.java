@@ -3,7 +3,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
-public class SendEmail {
+public class EnviarCorreo {
     public static void main(String args[]){
         try{
             String host ="smtp.gmail.com" ;
