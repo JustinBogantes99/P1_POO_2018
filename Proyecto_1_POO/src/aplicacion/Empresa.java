@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion;
-
 /**
  *
  * @author Justin
@@ -16,6 +10,14 @@ public class Empresa {
     private int telefono;
     private String dirrecion;
 
+    public Empresa(String razonSocial, int numeroCedulaJuridica, int telefono, String dirrecion) {
+        this.razonSocial = razonSocial;
+        this.numeroCedulaJuridica = numeroCedulaJuridica;
+        this.telefono = telefono;
+        this.dirrecion = dirrecion;
+    }
+
+    
     public String getRazonSocial() {
         return razonSocial;
     }

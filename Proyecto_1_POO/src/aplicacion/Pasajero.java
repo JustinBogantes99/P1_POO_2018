@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion;
 
 /**
@@ -16,6 +11,14 @@ public class Pasajero {
     private String direccion;
     private String correoElectronico;
 
+    public Pasajero(String nombreCompleto, int cedula, String direccion, String correoElectronico) {
+        this.nombreCompleto = nombreCompleto;
+        this.cedula = cedula;
+        this.direccion = direccion;
+        this.correoElectronico = correoElectronico;
+    }
+
+    
     public String getNombreCompleto() {
         return nombreCompleto;
     }
