@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion;
 //import java.util.Scanner;
 import java.util.ArrayList;
@@ -18,6 +13,15 @@ public class Chofer {
     private int cedula;
     private ArrayList<Licencia>licencias;
 
+    public Chofer(String nombreCompleto, int telefono, String correo, int cedula, ArrayList<Licencia> licencias) {
+        this.nombreCompleto = nombreCompleto;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.cedula = cedula;
+        this.licencias = licencias;
+    }
+    
+    
     public String getNombreCompleto() {
         return nombreCompleto;
     }
@@ -58,8 +62,5 @@ public class Chofer {
         this.licencias = licencias;
     }
     
-    
-    
- 
     
 }
