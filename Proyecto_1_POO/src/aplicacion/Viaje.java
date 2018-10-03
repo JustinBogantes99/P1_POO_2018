@@ -1,8 +1,8 @@
 package aplicacion;
-import java.util.Date;
-import java.util.ArrayList;
+import java.util.*;
 /**
  *
+ * @author Carlos Andres Montero
  * @author Justin
  */
 public class Viaje {
@@ -14,10 +14,39 @@ public class Viaje {
     private double kilometrajeInicial;
     private double kilometrajeFinal;
     private String estado;
-    private ArrayList<Pasajero>pasajeros;
+    private List<Pasajero>pasajeros;
     private Date fechaSolicitud;
+    private String consecutivo; //IVA-XXX
+    private Secretaria solicitante;
 
-    public Viaje(String puntoSalida, Date fechaInicio, Date fechaFinalizacion, Chofer choferAsignado, double kilometrajeInicial, double kilometrajeFinal, String estado, ArrayList<Pasajero> pasajeros, Date fechaSolicitud) {
+    /*----------Contructor(es)----------*/
+    /**
+     * Contructor default
+     */
+    public Viaje() {
+    }
+
+    /**
+     * Contructor Sobrecargado
+     * 
+     * @param puntoSalida:String
+     * @param fechaInicio:Date
+     * @param fechaFinalizacion:Date
+     * @param choferAsignado:Chofer
+     * @param kilometrajeInicial:double
+     * @param kilometrajeFinal:double
+     * @param estado:String
+     * @param pasajeros:List
+     * @param fechaSolicitud:Date
+     * @param consecutivo:String
+     * @param solicitante:Secretaria
+     */
+    public Viaje(String puntoSalida, Date fechaInicio, 
+            Date fechaFinalizacion, Chofer choferAsignado, 
+            double kilometrajeInicial, double kilometrajeFinal, 
+            String estado, List<Pasajero> pasajeros, 
+            Date fechaSolicitud, String consecutivo, 
+            Secretaria solicitante) {
         this.puntoSalida = puntoSalida;
         this.fechaInicio = fechaInicio;
         this.fechaFinalizacion = fechaFinalizacion;
@@ -27,9 +56,10 @@ public class Viaje {
         this.estado = estado;
         this.pasajeros = pasajeros;
         this.fechaSolicitud = fechaSolicitud;
+        this.consecutivo = consecutivo;
+        this.solicitante = solicitante;
     }
 
-        
     public String getPuntoSalida() {
         return puntoSalida;
     }
@@ -86,11 +116,11 @@ public class Viaje {
         this.estado = estado;
     }
 
-    public ArrayList<Pasajero> getPasajeros() {
+    public List<Pasajero> getPasajeros() {
         return pasajeros;
     }
 
-    public void setPasajeros(ArrayList<Pasajero> pasajeros) {
+    public void setPasajeros(List<Pasajero> pasajeros) {
         this.pasajeros = pasajeros;
     }
 
@@ -101,7 +131,21 @@ public class Viaje {
     public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
-    
-    
+
+    public String getConsecutivo() {
+        return consecutivo;
+    }
+
+    public void setConsecutivo(String consecutivo) {
+        this.consecutivo = consecutivo;
+    }
+
+    public Secretaria getSolicitante() {
+        return solicitante;
+    }
+
+    public void setSolicitante(Secretaria solicitante) {
+        this.solicitante = solicitante;
+    }
     
 }

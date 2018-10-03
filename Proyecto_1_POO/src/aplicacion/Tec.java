@@ -141,7 +141,7 @@ public class Tec {
         this.Usuarios = Usuarios;
     }
 
-    /*----------Metodos Especialisados----------*/
+    /*----------Metodos Especialisados Secretaria----------*/
     /**
      * Metodo encargado de Agregar un Nuevo usuario y retornar un valor de tipo
      * boolean si se logro agregar exitosamente
@@ -181,40 +181,58 @@ public class Tec {
      * @return boolean
      */
     public boolean SolicitarViaje(Viaje entrada) {
-
+        if (VaidarViaje(entrada)) {
+            viajes.add(entrada);
+            return true;
+        }
         return false;
     }
 
+    /**
+     * Este Metodo Validara si el viaje se podra agregar si cumple todos los
+     * requisitos de lo contrario retornara un falce haciendo que el metodo
+     * Solicitar viaje NO agreque la peticion de viaje
+     *
+     * @param entrada:Viaje
+     * @return boolean
+     */
     public boolean VaidarViaje(Viaje entrada) {
         //Valida si algun pasajero tiene choque de Fechas con otro Viaje
         for (Viaje temp : viajes) {
             for (Pasajero pasajeroEntrada : entrada.getPasajeros()) {
                 for (Pasajero pasajeroRegistrado : temp.getPasajeros()) {
-                    if(pasajeroEntrada.getCedula()==pasajeroRegistrado.getCedula()){
-                       if(ValidarFechasPasajero(entrada, temp)){
-                           JOptionPane.showMessageDialog(null, "El pasajero: " +
-                               pasajeroEntrada.getNombreCompleto() + "\n Cedula: "+
-                               pasajeroEntrada.getCedula()+
-                               "\nPresenta choque con la fecha de otro viaje", 
-                               "ALERTA", 2);
-                           return false;
-                       }
-                        
+                    if (pasajeroEntrada.getCedula() == pasajeroRegistrado.getCedula()) {
+                        if (ValidarFechasPasajero(entrada, temp)) {
+                            JOptionPane.showMessageDialog(null, "El pasajero: "
+                                    + pasajeroEntrada.getNombreCompleto() + "\n Cedula: "
+                                    + pasajeroEntrada.getCedula()
+                                    + "\nPresenta choque con la fecha de otro viaje",
+                                    "ALERTA", 2);
+                            return false;
+                        }
                     }
                 }
             }
         }
         //fecha de inicio de solicitud tiene que tener porlomenos 24 horas antes
-        
-        
-
+        if (ValidarFechaSolicitud(entrada)) {
+            return false;
+        }
+        //Valida la cantidad de pasdajeros que tiene
+        if (entrada.getPasajeros().size() < 1) {
+            JOptionPane.showMessageDialog(null, "La cantidad minima de pasajeros\n"
+                    + "tiene que ser de 1",
+                    "ALERTA", 2);
+            return false;
+        }
+        //Si se cumplieron todos los requisitos retorna true
         return true;
     }
 
     /**
-     * Este metodo Valida las fechas de inicio de 2 viajes y revisa si alguna 
-     * de las fechas se traslapan
-     * 
+     * Este metodo Valida las fechas de inicio de 2 viajes y revisa si alguna de
+     * las fechas se traslapan
+     *
      * @param viajeNuevo:Viaje
      * @param viajeExistente:Viaje
      * @return boolean
@@ -223,25 +241,82 @@ public class Tec {
         //SimpleDateFormat traductor = new SimpleDateFormat("dd/MM/YYYY");
         Date fechaInicioViajeNuevo = viajeNuevo.getFechaInicio();
         Date fechaFinViajeNuevo = viajeNuevo.getFechaFinalizacion();
-        if(fechaInicioViajeNuevo.after(viajeExistente.getFechaInicio()) && 
-                fechaInicioViajeNuevo.before(viajeExistente.getFechaFinalizacion())){
+        if (fechaInicioViajeNuevo.after(viajeExistente.getFechaInicio())
+                && fechaInicioViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
             return true;
         }
-        if(fechaFinViajeNuevo.after(viajeExistente.getFechaInicio()) && 
-                fechaFinViajeNuevo.before(viajeExistente.getFechaFinalizacion())){
+        if (fechaFinViajeNuevo.after(viajeExistente.getFechaInicio())
+                && fechaFinViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
             return true;
         }
-       
+
         return false;
     }
 
-    public boolean ValidarFechaSolicitud(Viaje entrada){
-        Date fechaActrual= new Date();
-        
-        return true;
+    /**
+     * Este metodo se encarga de sumarle 24 horas a la fecha de Solicitud y
+     * revisa que no sea igual o quede despues de la fecha de Inicio
+     *
+     * @param entrada:Viaje
+     * @return boolean
+     */
+    public boolean ValidarFechaSolicitud(Viaje entrada) {
+        Date fechaMasHoras = entrada.getFechaSolicitud();
+        //Se agregan 24 horas a la fecha de peticion
+        fechaMasHoras.setHours(fechaMasHoras.getHours() + 24);
+        if (fechaMasHoras.equals(entrada.getFechaInicio()) && fechaMasHoras.after(entrada.getFechaInicio())) {
+            JOptionPane.showMessageDialog(null, "No se puede Solicitar un viaje\n"
+                    + "que no tenga minimo mas de 24 horas\n"
+                    + "antes de su hora de salida",
+                    "ALERTA", 2);
+            return true;
+        }
+        return false;
     }
-    
-    
-    
+
+    /**
+     * Metodo encargado de listar solicitudes de viaje de un solo usuario
+     * mediante 3 tipos de Busqueda
+     *
+     * @param entradaSecretaria:Secretaria
+     * @param tipoBusqueda:int
+     * @param Busqueda:String
+     * @return String
+     */
+    public String ListarSolicitudesViaje(Secretaria entradaSecretaria,
+            int tipoBusqueda, String Busqueda) {
+        List<Viaje> viajesSolicitados = BusquedaSolicitudesViajesUsuario(
+                entradaSecretaria);
+        if(viajesSolicitados.isEmpty()){
+            JOptionPane.showMessageDialog(null,"El usuario no ha creado\n"
+                    + "ninguna Solicitud de Viaje",
+                    "Alerta",2);
+            return "";
+        }
+        String salida="";
+        
+        
+        
+        return salida;
+    }
+
+    /**
+     * Este metodo se encaga de buscar todos los viajes solicitados por un
+     * usuario y retornarlos en una lista con todas sus solicitudes de viajes
+     *
+     * @param entrada:Secretaria
+     * @return List
+     */
+    public List<Viaje> BusquedaSolicitudesViajesUsuario(Secretaria entrada) {
+        List<Viaje> salida = new ArrayList();
+        for (Viaje temporal : viajes) {
+            if (temporal.getSolicitante().getNombreUsuario().equals(
+                    entrada.getNombreUsuario())) {
+                salida.add(temporal);
+            }
+        }
+        return salida;
+    }
+
     /*----------Fin de la clase---------*/
 }
