@@ -1,23 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package aplicacion;
+
 /**
  *
  * @author Justin
  */
-public class Administrador {
+public class Secretaria {
     
     private String nombreCompleto;
     private String departamento;
     private String nombreUsuario;
     private int telefono;
     private String password;
-
-    public Administrador(String nombreCompleto, String departamento, String nombreUsuario, int telefono, String password) {
-        this.nombreCompleto = nombreCompleto;
-        this.departamento = departamento;
-        this.nombreUsuario = nombreUsuario;
-        this.telefono = telefono;
-        this.password = password;
-    }
 
     public String getNombreCompleto() {
         return nombreCompleto;
@@ -58,6 +56,5 @@ public class Administrador {
     public void setPassword(String password) {
         this.password = password;
     }
-    
     
 }
