@@ -81,7 +81,7 @@ public class Secretaria {
     
 
     /*----------Metodos Especialisados----------*/
- /*----------RegistrarPasajero----------*/
+    /*----------RegistrarPasajero----------*/
     /**
      * Este metodo se comunica con la clase Tec dentro de controlador Principal
      * y ejecuta el metodo de RegistrarPasajero Nuevo
