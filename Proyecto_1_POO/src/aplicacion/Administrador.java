@@ -11,14 +11,6 @@ public class Administrador {
     private int telefono;
     private String password;
 
-    public Administrador(String nombreCompleto, String departamento, String nombreUsuario, int telefono, String password) {
-        this.nombreCompleto = nombreCompleto;
-        this.departamento = departamento;
-        this.nombreUsuario = nombreUsuario;
-        this.telefono = telefono;
-        this.password = password;
-    }
-
     public String getNombreCompleto() {
         return nombreCompleto;
     }
