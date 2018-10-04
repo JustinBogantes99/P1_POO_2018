@@ -58,6 +58,7 @@ public class Secretaria {
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     /*----------Metodos Especialisados----------*/
     /*----------RegistrarPasajero----------*/
@@ -129,4 +130,6 @@ public class Secretaria {
     //----------Fin de la clase----------//
 =======
 >>>>>>> 0b28abeca2d4f81566cad34bc4402b1312ce8e32
+=======
+>>>>>>> parent of e528ac8... Agregacion de metodos
 }

@@ -1,12 +1,24 @@
 package aplicacion;
+<<<<<<< HEAD
+=======
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+>>>>>>> parent of e528ac8... Agregacion de metodos
 import java.util.ArrayList;
 /**
  *
  * @author Justin
  */
 public class implementacion {
+<<<<<<< HEAD
     public static void main(String args[]){
         
+=======
+
+    public static void main(String args[]) {
+        /*  
+>>>>>>> parent of e528ac8... Agregacion de metodos
         Licencia nuevaLicencia = new Licencia(201815465,"3/10/18", "B", "3/10/38");
         ArrayList <Licencia> nuevaLicencias = new ArrayList <Licencia>();
         nuevaLicencias.add(nuevaLicencia);
