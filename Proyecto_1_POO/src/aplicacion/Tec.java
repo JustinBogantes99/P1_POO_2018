@@ -144,9 +144,7 @@ public class Tec {
     }
 
     /*----------Metodos Especialisados Secretaria----------*/
-    
-    /*----------Registrar Pasajero----------*/
-    
+ /*----------Registrar Pasajero----------*/
     /**
      * Metodo encargado de Agregar un Nuevo usuario y retornar un valor de tipo
      * boolean si se logro agregar exitosamente
@@ -179,7 +177,6 @@ public class Tec {
     }
 
     /*----------Solicitar Viaje----------*/
-    
     /**
      * Metodo Que se encargara de agregar una propuesta bde viaje a la lista de
      * Viajes y de esta manera retornar un true si el viaje se pudo agregar
@@ -282,7 +279,6 @@ public class Tec {
     }
 
     /*----------Listar Solicitudes de Viaje----------*/
-    
     /**
      * Metodo encargado de listar solicitudes de viaje de un solo usuario
      * mediante 3 tipos de Busqueda
@@ -401,7 +397,6 @@ public class Tec {
     }
 
     /*----------Consultar detalle de una solicitud----------*/
-    
     /**
      * Metodo encargado de buscar un viaje en espesifico y retornar toda la
      * informacion de este
@@ -421,7 +416,6 @@ public class Tec {
     }
 
     /*----------Cancelar Solicitud de viaje----------*/
-    
     /**
      * Este metodo unsca un Viaje en especifico y cambia su estado a Cancelado y
      * si el viaje esta en Aprovado enviara mensajes a los interesados
@@ -432,12 +426,12 @@ public class Tec {
     public boolean CancelarSolicitudViaje(String consecutivo) {
         for (Viaje temporal : viajes) {
             if (temporal.getConsecutivo().equals(consecutivo)) {
-                if(temporal.getEstado().equals("Aprobado")){
-                   /*Aque irian el metodo de enviar mensaje a los interesados*/
+                if (temporal.getEstado().equals("Aprobado")) {
+                    /*Aque irian el metodo de enviar mensaje a los interesados*/
                 }
-                
+
                 temporal.setEstado("Cancelado");
-                    
+
                 return true;
             }
         }
@@ -445,96 +439,289 @@ public class Tec {
                 + "con el consecutivo: " + consecutivo, "Alerta", 2);
         return false;
     }
-    
+
     /*----------Metodos Especialisados Administrador----------*/
-    
-    /*----------Registrar Chofer Nuevo----------*/
-    
+ /*----------Registrar Chofer Nuevo----------*/
     /**
-     * este metodo se encaraga de llamar a otro metodo de validacion y si el 
+     * este metodo se encaraga de llamar a otro metodo de validacion y si el
      * chofer es apto sera agregado a la base de datos
-     * 
+     *
      * @param entrada:Chofer
      * @return boolean
      */
-    public boolean RegistrarChoferNuevo(Chofer entrada){
-        if(ValidarChoferNuevo(entrada)){
+    public boolean RegistrarChoferNuevo(Chofer entrada) {
+        if (ValidarChoferNuevo(entrada)) {
             choferes.add(entrada);
             return true;
         }
         return false;
     }
-    
+
     /**
-     * Metodo encargado de validar la variable de tipo Chofer para ver si
-     * se podra registrar dentro de los datos
-     * 
+     * Metodo encargado de validar la variable de tipo Chofer para ver si se
+     * podra registrar dentro de los datos
+     *
      * @param entrada:Chofer
      * @return boolean
      */
-    public boolean ValidarChoferNuevo(Chofer entrada){
+    public boolean ValidarChoferNuevo(Chofer entrada) {
         // validacion de que el chofer tenga al menos una licencia
-        if(entrada.getLicencias().isEmpty()){
-            JOptionPane.showMessageDialog(null,"No se puede agregar Chofer\n"
+        if (entrada.getLicencias().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se puede agregar Chofer\n"
                     + "sin ninguna licencia", "Alerta", 2);
             return false;
         }
         // validacion de ficha de vencimiento de la(s) licencias
-        for(Licencia temporal:entrada.getLicencias()){
-            try{
-            SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
-            Date fechaActual = new Date();
-            Date fechatemp = traductor.parse(temporal.getFechaExpiracion());
-                if(fechatemp.before(fechaActual) && fechatemp.equals(fechaActual)){
-                    JOptionPane.showMessageDialog(null,"No se puede agregar Chofer\n"
-                    + "con una licencia Vencida\n"
-                    + "Licencia: "+temporal.getNumero(),
-                    "Alerta", 2);
+        for (Licencia temporal : entrada.getLicencias()) {
+            try {
+                SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+                Date fechaActual = new Date();
+                Date fechatemp = traductor.parse(temporal.getFechaExpiracion());
+                if (fechatemp.before(fechaActual) && fechatemp.equals(fechaActual)) {
+                    JOptionPane.showMessageDialog(null, "No se puede agregar Chofer\n"
+                            + "con una licencia Vencida\n"
+                            + "Licencia: " + temporal.getNumero(),
+                            "Alerta", 2);
                     return false;
                 }
-            }
-            catch(HeadlessException | ParseException e){
+            } catch (HeadlessException | ParseException e) {
                 System.out.println("Error");
             }
         }
         return true;
     }
-    
+
     /*----------Registrar Nuevo Vehiculo----------*/
-    
     /**
      * Este metodo se encarga de llamar al metodo ValidarVehiculoNuevo y si el
      * vehiculo es cumple con ntodos los requerimientos sera agregado al sistema
-     * 
+     *
      * @param entrada:Vehiculo
      * @return boolean
      */
-    public boolean RegistrarVehiculoNuevo(Vehiculo entrada){
-        if(ValidarVehiculoNuevo(entrada)){
+    public boolean RegistrarVehiculoNuevo(Vehiculo entrada) {
+        if (ValidarVehiculoNuevo(entrada)) {
             vehiculos.add(entrada);
             return true;
         }
         return false;
     }
-    
+
     /**
      * Metodo encargado de validar un Si un vehiculo nuevo es apto de ser
      * agregado al sistema
-     * 
+     *
      * @param entrada:Vehiculo
      * @return boolean
      */
-    public boolean ValidarVehiculoNuevo(Vehiculo entrada){
+    public boolean ValidarVehiculoNuevo(Vehiculo entrada) {
         //Valida si el vehiculo no tiene un numero VIN repetido
-        for(Vehiculo temporal:vehiculos){
-            if(temporal.getNúmeroVin()==entrada.getNúmeroVin()){
-                JOptionPane.showMessageDialog(null,"No se puede agregar Vehiculo\n"
-                    + "Con un nuemro VIN ya existente", "Alerta", 2);
+        for (Vehiculo temporal : vehiculos) {
+            if (temporal.getNúmeroVin() == entrada.getNúmeroVin()) {
+                JOptionPane.showMessageDialog(null, "No se puede agregar Vehiculo\n"
+                        + "Con un nuemro VIN ya existente", "Alerta", 2);
                 return false;
             }
         }
         return true;
     }
+
+    /*----------Listar Viajes----------*/
+    /**
+     * Metodo encargado de ordenar y retornar en formato de String los datos de
+     * las solicitudes
+     *
+     * @return String
+     */
+    public String ListarViajesAdministrador() {
+        String salida = "";
+        //primero se buscara acomodar las solicitudes de viaje por orden de fecha
+        List<Viaje> viajesOrdenados = AcomodarViajesPorFecha();
+
+        //Se valida que la lista no este sin ninguna solicitud
+        if (viajesOrdenados.size() > 0) {
+            //acumila los returnos en el formato deseado dentro de la variable salida
+            for (Viaje temporal : viajesOrdenados) {
+                salida += temporal.ImprimidorlistarSolicitudesAdministrador();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede Desplegar Solicitudes\n"
+                    + "ya que no existe ninguna en el\n"
+                    + "sistema actualmente", "Alerta", 2);
+        }
+
+        return salida;
+    }
+
+    /**
+     * Este metodo es encargado de acomodar las fechas por orden de menor a
+     * mayor
+     *
+     * @return List
+     */
+    public List<Viaje> AcomodarViajesPorFecha() {
+        List<Viaje> temporal = viajes;
+        Collections.sort(temporal, new Comparator<Viaje>() {
+            @Override
+            public int compare(Viaje objeto1, Viaje objeto2) {
+                return objeto1.getFechaSolicitud().compareTo(objeto2.getFechaSolicitud());
+            }
+        });
+        return temporal;
+
+    }
+
+    //----------Aprobar Solicitud de viaje----------//
     
+    /**
+     * Este metodo se llama de validar los datos de entrada para aprovar una 
+     * solicitud y luego envia un correo a los interesados;
+     * @param estradaChofer:Chofer
+     * @param entradaVehiculo:Vehiculo
+     * @param entradaIdViaje:String
+     * @return boolean
+     */
+    public boolean AprobarSolicitudAdministrador(Chofer estradaChofer, Vehiculo entradaVehiculo,
+            String entradaIdViaje) {
+        /*Lo primero sera buscar el vijae que se desea aprobar*/
+        Viaje ViajePorAprobar;
+        for (Viaje temp : viajes) {
+            if (temp.getConsecutivo().equals(entradaIdViaje)) {
+                ViajePorAprobar = temp;
+
+                /*Luego lo que se hara es Validar todas las condiciones nesesarias 
+                antes de aprobar la solicitud*/
+                if (ValidarAprovacionSolicitud(ViajePorAprobar, estradaChofer,
+                        entradaVehiculo)) {
+                    /*se procedera a aprovar el viaje y agregar la informacion
+                    neseradia*/
+                    ViajePorAprobar.setEstado("Aprobado");
+                    ViajePorAprobar.setChoferAsignado(estradaChofer);
+                    ViajePorAprobar.setVehiculoAsignado(entradaVehiculo);
+                    /*Aqie se notificara por correo a los interesados que el viaje
+                    fue Aprovado*/
+                    
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+    /**
+     * Este metodo llama la los metodos que validan tanto al chofer como al
+     * Vehiculo
+     * 
+     * @param entradaViaje:Viaje
+     * @param estradaChofer:Chofer
+     * @param entradaVehiculo:Vehiculo
+     * @return boolean
+     */
+    public boolean ValidarAprovacionSolicitud(Viaje entradaViaje, Chofer estradaChofer, Vehiculo entradaVehiculo) {
+
+        /*lo primero sera validar al chofer si cumpre todas las condiciones*/
+        if (DescartarChoferAprobacion(entradaViaje, estradaChofer)) {
+            return false;
+        }
+        if (DescartarVehiculoAprobacion(entradaViaje, entradaVehiculo)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Este metodo revisa si el chofer ya esta asignado a un vijae y si lo esta
+     * que no tenga un choque de fechas
+     *
+     * @param entradaViaje:Viaje
+     * @param entradaChofer:Chofer
+     * @return boolean
+     */
+    public boolean DescartarChoferAprobacion(Viaje entradaViaje, Chofer entradaChofer) {
+        for (Viaje temporal : viajes) {
+            if (temporal.getEstado().equals("Aprobado")) {
+                if (temporal.getChoferAsignado().getCedula() == entradaChofer.getCedula()) {
+                    if (ValidarFechasSolicitudAdministrador(entradaViaje, temporal)) {
+                        JOptionPane.showMessageDialog(null, "No se puede agregar Chofer\n"
+                                + "que presente un choque de horario\n"
+                                + "con el viaje: " + temporal.getConsecutivo(),
+                                "Alerta", 2);
+                        return true;
+                    }
+
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Este metodo revisa si el Vahiculo ya esta asignado a un vijae y si lo
+     * esta que no tenga un choque de fechas ademas de que la capasidad de este
+     * sea la correcta para el viaje
+     *
+     * @param entradaViaje:Viaje
+     * @param entradaVehiculo:Vehiculo
+     * @return boolean
+     */
+    public boolean DescartarVehiculoAprobacion(Viaje entradaViaje, Vehiculo entradaVehiculo) {
+
+        for (Viaje temporal : viajes) {
+            if (temporal.getEstado().equals("Aprobado")) {
+                if (temporal.getVehiculoAsignado().getNúmeroVin()
+                        == entradaVehiculo.getNúmeroVin()) {
+                    if (ValidarFechasSolicitudAdministrador(entradaViaje, temporal)) {
+                        JOptionPane.showMessageDialog(null, "No se puede agregar Vehiculor\n"
+                                + "que presente un choque de horario\n"
+                                + "con el viaje: " + temporal.getConsecutivo(),
+                                "Alerta", 2);
+                        return true;
+                    }
+                    int totalPasajeros = (1 + entradaViaje.getPasajeros().size());
+                    if (entradaVehiculo.getCapacidad() < totalPasajeros) {
+                        JOptionPane.showMessageDialog(null, "No se puede agregar Vehiculor\n"
+                                + "que presente una capacidad menor \n"
+                                + "a la del viaje: " + totalPasajeros,
+                                "Alerta", 2);
+                        return true;
+                    }
+                }
+
+            }
+
+        }
+
+        return false;
+    }
+
+    /**
+     * Este metodo Valida las fechas de inicio de 2 viajes y revisa si alguna de
+     * las fechas se traslapan
+     *
+     * @param viajeNuevo:Viaje
+     * @param viajeExistente:Viaje
+     * @return boolean
+     */
+    public boolean ValidarFechasSolicitudAdministrador(Viaje viajeNuevo, Viaje viajeExistente) {
+        //SimpleDateFormat traductor = new SimpleDateFormat("dd/MM/YYYY");
+        Date fechaInicioViajeNuevo = viajeNuevo.getFechaInicio();
+        Date fechaFinViajeNuevo = viajeNuevo.getFechaFinalizacion();
+        if (fechaInicioViajeNuevo.after(viajeExistente.getFechaInicio())
+                && fechaInicioViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
+            return true;
+        }
+        if (fechaFinViajeNuevo.after(viajeExistente.getFechaInicio())
+                && fechaFinViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
+            return true;
+        }
+
+        return false;
+    }
+    //----------Registrar nueva Secretaria----------//
+    
+    
+
     /*----------Fin de la clase---------*/
 }

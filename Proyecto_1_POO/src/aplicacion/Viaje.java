@@ -189,5 +189,24 @@ public class Viaje {
         }
         return acum;
     }
+    
+    /**
+     * Este metodo se encarga de retornar un String con los datos en un formato
+     * deseado en el proyecto
+     * 
+     * @return String 
+     */
+     public String ImprimidorlistarSolicitudesAdministrador() {
+        SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+        String acum = "";
+        acum += "ID: " + consecutivo;
+        acum += "\nFecha de ingreso: " + traductor.format(fechaSolicitud);
+        acum += "\nEstado: " + estado;
+        acum += "\nDestino: " + destino;
+        acum += "\nEscuela o Departamento: " + getSolicitante().getDepartamento();
+        acum += "\n";
+
+        return acum;
+    }
 
 }
