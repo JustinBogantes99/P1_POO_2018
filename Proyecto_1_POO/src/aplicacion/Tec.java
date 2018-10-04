@@ -319,6 +319,7 @@ public class Tec {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * Metodo encargado de recolectar todos los viajes que coinciden con la
      * fecha de entrada y retorna todos los viajes en un String ya con el
@@ -524,6 +525,8 @@ public class Tec {
     
     
     
+=======
+>>>>>>> parent of e528ac8... Agregacion de metodos
 =======
 >>>>>>> parent of e528ac8... Agregacion de metodos
     /*----------Fin de la clase---------*/

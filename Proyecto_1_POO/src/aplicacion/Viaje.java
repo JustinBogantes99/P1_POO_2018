@@ -1,7 +1,11 @@
 package aplicacion;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.ArrayList;
+=======
+import java.util.*;
+>>>>>>> parent of e528ac8... Agregacion de metodos
 =======
 import java.util.*;
 >>>>>>> parent of e528ac8... Agregacion de metodos
@@ -19,7 +23,11 @@ public class Viaje {
     private double kilometrajeFinal;
     private String estado;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private ArrayList<Pasajero>pasajeros;
+=======
+    private List<Pasajero>pasajeros;
+>>>>>>> parent of e528ac8... Agregacion de metodos
 =======
     private List<Pasajero>pasajeros;
 >>>>>>> parent of e528ac8... Agregacion de metodos
@@ -39,6 +47,43 @@ public class Viaje {
 
 <<<<<<< HEAD
         
+=======
+    /**
+     * Contructor Sobrecargado
+     * 
+     * @param puntoSalida:String
+     * @param fechaInicio:Date
+     * @param fechaFinalizacion:Date
+     * @param choferAsignado:Chofer
+     * @param kilometrajeInicial:double
+     * @param kilometrajeFinal:double
+     * @param estado:String
+     * @param pasajeros:List
+     * @param fechaSolicitud:Date
+     * @param consecutivo:String
+     * @param solicitante:Secretaria
+     */
+    public Viaje(String puntoSalida, Date fechaInicio, 
+            Date fechaFinalizacion, Chofer choferAsignado, 
+            double kilometrajeInicial, double kilometrajeFinal, 
+            String estado, List<Pasajero> pasajeros, 
+            Date fechaSolicitud, String consecutivo, 
+            Secretaria solicitante) {
+        this.puntoSalida = puntoSalida;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinalizacion = fechaFinalizacion;
+        this.choferAsignado = choferAsignado;
+        this.kilometrajeInicial = kilometrajeInicial;
+        this.kilometrajeFinal = kilometrajeFinal;
+        this.estado = estado;
+        this.pasajeros = pasajeros;
+        this.fechaSolicitud = fechaSolicitud;
+        this.consecutivo = consecutivo;
+        this.solicitante = solicitante;
+    }
+
+<<<<<<< HEAD
+>>>>>>> parent of e528ac8... Agregacion de metodos
 =======
     /**
      * Contructor Sobrecargado
@@ -166,6 +211,9 @@ public class Viaje {
     public void setSolicitante(Secretaria solicitante) {
         this.solicitante = solicitante;
     }
+<<<<<<< HEAD
+>>>>>>> parent of e528ac8... Agregacion de metodos
+=======
 >>>>>>> parent of e528ac8... Agregacion de metodos
     
 }

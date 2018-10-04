@@ -12,9 +12,12 @@ import java.util.ArrayList;
  */
 public class implementacion {
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static void main(String args[]){
         
 =======
+=======
+>>>>>>> parent of e528ac8... Agregacion de metodos
 
     public static void main(String args[]) {
         /*  
