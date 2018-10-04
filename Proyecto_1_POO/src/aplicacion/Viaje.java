@@ -1,8 +1,12 @@
 package aplicacion;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.ArrayList;
+=======
+import java.util.*;
+>>>>>>> parent of e528ac8... Agregacion de metodos
 =======
 import java.util.*;
 >>>>>>> parent of e528ac8... Agregacion de metodos
@@ -24,7 +28,11 @@ public class Viaje {
     private String estado;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private ArrayList<Pasajero>pasajeros;
+=======
+    private List<Pasajero>pasajeros;
+>>>>>>> parent of e528ac8... Agregacion de metodos
 =======
     private List<Pasajero>pasajeros;
 >>>>>>> parent of e528ac8... Agregacion de metodos
@@ -83,8 +91,11 @@ public class Viaje {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of e528ac8... Agregacion de metodos
 =======
+=======
+>>>>>>> parent of e528ac8... Agregacion de metodos
     /**
      * Contructor Sobrecargado
      * 
@@ -119,6 +130,9 @@ public class Viaje {
         this.solicitante = solicitante;
     }
 
+<<<<<<< HEAD
+>>>>>>> parent of e528ac8... Agregacion de metodos
+=======
 >>>>>>> parent of e528ac8... Agregacion de metodos
     public String getPuntoSalida() {
         return puntoSalida;
@@ -212,6 +226,9 @@ public class Viaje {
         this.solicitante = solicitante;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of e528ac8... Agregacion de metodos
+=======
 >>>>>>> parent of e528ac8... Agregacion de metodos
 =======
 >>>>>>> parent of e528ac8... Agregacion de metodos
