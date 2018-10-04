@@ -5,6 +5,8 @@
  */
 package aplicacion;
 
+import java.awt.HeadlessException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -142,6 +144,9 @@ public class Tec {
     }
 
     /*----------Metodos Especialisados Secretaria----------*/
+    
+    /*----------Registrar Pasajero----------*/
+    
     /**
      * Metodo encargado de Agregar un Nuevo usuario y retornar un valor de tipo
      * boolean si se logro agregar exitosamente
@@ -173,6 +178,8 @@ public class Tec {
         return true;
     }
 
+    /*----------Solicitar Viaje----------*/
+    
     /**
      * Metodo Que se encargara de agregar una propuesta bde viaje a la lista de
      * Viajes y de esta manera retornar un true si el viaje se pudo agregar
@@ -274,6 +281,8 @@ public class Tec {
         return false;
     }
 
+    /*----------Listar Solicitudes de Viaje----------*/
+    
     /**
      * Metodo encargado de listar solicitudes de viaje de un solo usuario
      * mediante 3 tipos de Busqueda
@@ -287,16 +296,24 @@ public class Tec {
             int tipoBusqueda, String Busqueda) {
         List<Viaje> viajesSolicitados = BusquedaSolicitudesViajesUsuario(
                 entradaSecretaria);
-        if(viajesSolicitados.isEmpty()){
-            JOptionPane.showMessageDialog(null,"El usuario no ha creado\n"
+        if (viajesSolicitados.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El usuario no ha creado\n"
                     + "ninguna Solicitud de Viaje",
-                    "Alerta",2);
+                    "Alerta", 2);
             return "";
         }
-        String salida="";
-        
-        
-        
+        String salida = "";
+        switch (tipoBusqueda) {
+            case 0://Busqueda por Fecha(dd/MM/yyyy)
+                salida = SolicitudesViajesPorFecha(viajesSolicitados, Busqueda);
+                break;
+            case 1://Busqueda por Estado(Confeccion/Aprobado/Cancelado/No Aprobado)
+                salida = SolicitudesViajesPorEstado(viajesSolicitados, Busqueda);
+                break;
+            case 2://Busqueda por Destino
+                salida = SolicitudesViajesPorDestino(viajesSolicitados, Busqueda);
+                break;
+        }
         return salida;
     }
 
@@ -318,9 +335,6 @@ public class Tec {
         return salida;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     /**
      * Metodo encargado de recolectar todos los viajes que coinciden con la
      * fecha de entrada y retorna todos los viajes en un String ya con el
@@ -522,15 +536,5 @@ public class Tec {
         return true;
     }
     
-    /*----------Listar Viajes----------*/
-    
-    
-    
-=======
->>>>>>> parent of e528ac8... Agregacion de metodos
-=======
->>>>>>> parent of e528ac8... Agregacion de metodos
-=======
->>>>>>> parent of e528ac8... Agregacion de metodos
     /*----------Fin de la clase---------*/
 }

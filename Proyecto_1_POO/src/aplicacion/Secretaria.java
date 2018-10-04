@@ -7,16 +7,29 @@ package aplicacion;
 
 /**
  *
+ * @author Carlos Andres Montero
  * @author Justin
  */
 public class Secretaria {
+    //----------Variables de la Clase----------//
     
     private String nombreCompleto;
     private String departamento;
+    /*El nombre del usuario corresponde al nombre 
+    utilizado en el correo electrónico*/
     private String nombreUsuario;
     private int telefono;
     private String password;
+    private String CorreoElectronico;
+    
+    //----------Contructor(es)----------//
+    /**
+     * Contructor default de la clase
+     */
+    public Secretaria() {
+    }
 
+    //----------Setters y Getters----------//
     public String getNombreCompleto() {
         return nombreCompleto;
     }
@@ -56,14 +69,19 @@ public class Secretaria {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getCorreoElectronico() {
+        return CorreoElectronico;
+    }
+
+    public void setCorreoElectronico(String CorreoElectronico) {
+        this.CorreoElectronico = CorreoElectronico;
+    }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+    
 
     /*----------Metodos Especialisados----------*/
-    /*----------RegistrarPasajero----------*/
+ /*----------RegistrarPasajero----------*/
     /**
      * Este metodo se comunica con la clase Tec dentro de controlador Principal
      * y ejecuta el metodo de RegistrarPasajero Nuevo
@@ -130,12 +148,4 @@ public class Secretaria {
     }
 
     //----------Fin de la clase----------//
-=======
->>>>>>> 0b28abeca2d4f81566cad34bc4402b1312ce8e32
-=======
->>>>>>> parent of e528ac8... Agregacion de metodos
-=======
->>>>>>> parent of e528ac8... Agregacion de metodos
-=======
->>>>>>> parent of e528ac8... Agregacion de metodos
 }
