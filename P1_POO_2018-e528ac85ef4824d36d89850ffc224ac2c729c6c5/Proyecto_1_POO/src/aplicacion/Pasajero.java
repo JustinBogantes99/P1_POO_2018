@@ -10,6 +10,7 @@ public class Pasajero {
     private int cedula;
     private String direccion;
     private String correoElectronico;
+    private int telefono;
 
     public Pasajero(String nombreCompleto, int cedula, String direccion, String correoElectronico) {
         this.nombreCompleto = nombreCompleto;
@@ -58,5 +59,23 @@ public class Pasajero {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-    private int telefono;
+
+    /**
+     * toString modificado para que despliegue los datos de una manera deseada
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+         String acum = "";
+         acum += "Nombre: " + nombreCompleto; 
+         acum += "\nCedula: " + cedula; 
+         acum += "\nDireccion: " + direccion; 
+         acum += "\nCorreo: " + correoElectronico; 
+         acum += "\nTelefono: " + telefono; 
+         return acum;
+    }
+    
+    
+    
 }
