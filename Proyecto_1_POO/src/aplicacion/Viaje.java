@@ -1,20 +1,25 @@
 package aplicacion;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
+
 /**
  *
  * @author Carlos Andres Montero
  * @author Justin
  */
 public class Viaje {
-    
+
     private String puntoSalida;
+    private String destino;
     private Date fechaInicio;
     private Date fechaFinalizacion;
     private Chofer choferAsignado;
+    private Vehiculo vehiculoAsignado;
     private double kilometrajeInicial;
     private double kilometrajeFinal;
-    private String estado;
-    private List<Pasajero>pasajeros;
+    private String estado;//(Confeccion/Aprobado/Cancelado/No Aprobado)
+    private List<Pasajero> pasajeros;
     private Date fechaSolicitud;
     private String consecutivo; //IVA-XXX
     private Secretaria solicitante;
@@ -26,46 +31,20 @@ public class Viaje {
     public Viaje() {
     }
 
-    /**
-     * Contructor Sobrecargado
-     * 
-     * @param puntoSalida:String
-     * @param fechaInicio:Date
-     * @param fechaFinalizacion:Date
-     * @param choferAsignado:Chofer
-     * @param kilometrajeInicial:double
-     * @param kilometrajeFinal:double
-     * @param estado:String
-     * @param pasajeros:List
-     * @param fechaSolicitud:Date
-     * @param consecutivo:String
-     * @param solicitante:Secretaria
-     */
-    public Viaje(String puntoSalida, Date fechaInicio, 
-            Date fechaFinalizacion, Chofer choferAsignado, 
-            double kilometrajeInicial, double kilometrajeFinal, 
-            String estado, List<Pasajero> pasajeros, 
-            Date fechaSolicitud, String consecutivo, 
-            Secretaria solicitante) {
-        this.puntoSalida = puntoSalida;
-        this.fechaInicio = fechaInicio;
-        this.fechaFinalizacion = fechaFinalizacion;
-        this.choferAsignado = choferAsignado;
-        this.kilometrajeInicial = kilometrajeInicial;
-        this.kilometrajeFinal = kilometrajeFinal;
-        this.estado = estado;
-        this.pasajeros = pasajeros;
-        this.fechaSolicitud = fechaSolicitud;
-        this.consecutivo = consecutivo;
-        this.solicitante = solicitante;
-    }
-
     public String getPuntoSalida() {
         return puntoSalida;
     }
 
     public void setPuntoSalida(String puntoSalida) {
         this.puntoSalida = puntoSalida;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
     public Date getFechaInicio() {
@@ -90,6 +69,14 @@ public class Viaje {
 
     public void setChoferAsignado(Chofer choferAsignado) {
         this.choferAsignado = choferAsignado;
+    }
+
+    public Vehiculo getVehiculoAsignado() {
+        return vehiculoAsignado;
+    }
+
+    public void setVehiculoAsignado(Vehiculo vehiculoAsignado) {
+        this.vehiculoAsignado = vehiculoAsignado;
     }
 
     public double getKilometrajeInicial() {
@@ -147,5 +134,60 @@ public class Viaje {
     public void setSolicitante(Secretaria solicitante) {
         this.solicitante = solicitante;
     }
-    
+
+    /**
+     * Metodo que imprime la informacion de varias variables de la clase
+     *
+     * @return String
+     */
+    public String ImprimidorlistarSolicitudes() {
+        SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+        String acum = "";
+        acum += "ID: " + consecutivo;
+        acum += "\nFecha de ingreso: " + traductor.format(fechaSolicitud);
+        acum += "\nEstado: " + estado;
+        acum += "\nDestino: " + destino;
+        acum += "\nFecha de inicio: " + traductor.format(fechaInicio);
+        acum += "\n";
+
+        return acum;
+    }
+
+    /**
+     * toString de la clase acomodado con un formato deseado
+     *
+     * @return String
+     */
+    @Override
+    public String toString() {
+        SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+        String acum = "";
+        acum += "ID: " + consecutivo;
+        acum += "\nFecha de ingreso: " + traductor.format(fechaSolicitud);
+        acum += "\nEstado: " + estado;
+        acum += "\nDestino: " + destino;
+        acum += "\nFecha de inicio: " + traductor.format(fechaInicio);
+        acum += "\nFecha de Finalizacion: " + traductor.format(fechaFinalizacion);
+        if (choferAsignado == null) {
+            acum += "\nChofer: Sin Asignar";
+        } else {
+            acum += "\nChofer:\n" + choferAsignado.toString();
+        }
+        if (vehiculoAsignado == null) {
+            acum += "\nVehiculo: Sin Asignar";
+        } else {
+            acum += "\nVehiculo:\n" + vehiculoAsignado.toString();
+        }
+        acum += "\nPunto de Salida: " + puntoSalida;
+        acum += "\nKilometraje Inicial: " + kilometrajeInicial;
+        acum += "\nKilometraje Final: " + kilometrajeFinal;
+        acum += "\nSolicitante:\n" + solicitante.toString();
+        acum += "\nPasajero(s):\n";
+        for (Pasajero temp : pasajeros) {
+            acum += temp.toString();
+            acum += "\n";
+        }
+        return acum;
+    }
+
 }

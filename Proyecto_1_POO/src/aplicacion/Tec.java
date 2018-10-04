@@ -5,6 +5,8 @@
  */
 package aplicacion;
 
+import java.awt.HeadlessException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -142,6 +144,9 @@ public class Tec {
     }
 
     /*----------Metodos Especialisados Secretaria----------*/
+    
+    /*----------Registrar Pasajero----------*/
+    
     /**
      * Metodo encargado de Agregar un Nuevo usuario y retornar un valor de tipo
      * boolean si se logro agregar exitosamente
@@ -173,6 +178,8 @@ public class Tec {
         return true;
     }
 
+    /*----------Solicitar Viaje----------*/
+    
     /**
      * Metodo Que se encargara de agregar una propuesta bde viaje a la lista de
      * Viajes y de esta manera retornar un true si el viaje se pudo agregar
@@ -274,6 +281,8 @@ public class Tec {
         return false;
     }
 
+    /*----------Listar Solicitudes de Viaje----------*/
+    
     /**
      * Metodo encargado de listar solicitudes de viaje de un solo usuario
      * mediante 3 tipos de Busqueda
@@ -287,16 +296,24 @@ public class Tec {
             int tipoBusqueda, String Busqueda) {
         List<Viaje> viajesSolicitados = BusquedaSolicitudesViajesUsuario(
                 entradaSecretaria);
-        if(viajesSolicitados.isEmpty()){
-            JOptionPane.showMessageDialog(null,"El usuario no ha creado\n"
+        if (viajesSolicitados.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El usuario no ha creado\n"
                     + "ninguna Solicitud de Viaje",
-                    "Alerta",2);
+                    "Alerta", 2);
             return "";
         }
-        String salida="";
-        
-        
-        
+        String salida = "";
+        switch (tipoBusqueda) {
+            case 0://Busqueda por Fecha(dd/MM/yyyy)
+                salida = SolicitudesViajesPorFecha(viajesSolicitados, Busqueda);
+                break;
+            case 1://Busqueda por Estado(Confeccion/Aprobado/Cancelado/No Aprobado)
+                salida = SolicitudesViajesPorEstado(viajesSolicitados, Busqueda);
+                break;
+            case 2://Busqueda por Destino
+                salida = SolicitudesViajesPorDestino(viajesSolicitados, Busqueda);
+                break;
+        }
         return salida;
     }
 
@@ -318,5 +335,206 @@ public class Tec {
         return salida;
     }
 
+    /**
+     * Metodo encargado de recolectar todos los viajes que coinciden con la
+     * fecha de entrada y retorna todos los viajes en un String ya con el
+     * formato deseado
+     *
+     * @param listaSolicitudes:List
+     * @param fecha:String
+     * @return String
+     */
+    public String SolicitudesViajesPorFecha(List<Viaje> listaSolicitudes, String fecha) {
+        String acumulador = "";
+        try {
+            SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+            Date fechaBusqueda = traductor.parse(fecha);
+            for (Viaje temporal : listaSolicitudes) {
+                if (temporal.getFechaSolicitud().equals(fechaBusqueda)) {
+                    acumulador += temporal.ImprimidorlistarSolicitudes();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+        return acumulador;
+    }
+
+    /**
+     * Metodo encargado de recolectar todos los viajes que coinciden con el
+     * estado de entrada y retorna todos los viajes en un String ya con el
+     * formato deseado
+     *
+     * @param listaSolicitudes:List
+     * @param estado:String
+     * @return String
+     */
+    public String SolicitudesViajesPorEstado(List<Viaje> listaSolicitudes,
+            String estado) {
+        String acumulador = "";
+        for (Viaje temporal : listaSolicitudes) {
+            if (temporal.getEstado().equals(estado)) {
+                acumulador += temporal.ImprimidorlistarSolicitudes();
+            }
+        }
+        return acumulador;
+    }
+
+    /**
+     * Metodo encargado de recolectar todos los viajes que coinciden con el
+     * destino de entrada y retorna todos los viajes en un String ya con el
+     * formato deseado
+     *
+     * @param listaSolicitudes:List
+     * @param destino:String
+     * @return String
+     */
+    public String SolicitudesViajesPorDestino(List<Viaje> listaSolicitudes,
+            String destino) {
+        String acumulador = "";
+        for (Viaje temporal : listaSolicitudes) {
+            if (temporal.getDestino().equals(destino)) {
+                acumulador += temporal.ImprimidorlistarSolicitudes();
+            }
+        }
+        return acumulador;
+    }
+
+    /*----------Consultar detalle de una solicitud----------*/
+    
+    /**
+     * Metodo encargado de buscar un viaje en espesifico y retornar toda la
+     * informacion de este
+     *
+     * @param consecutivo:String
+     * @return String
+     */
+    public String ConsultarDetalleDeUnaSolicitud(String consecutivo) {
+        for (Viaje temporal : viajes) {
+            if (temporal.getConsecutivo().equals(consecutivo)) {
+                return temporal.toString();
+            }
+        }
+        JOptionPane.showMessageDialog(null, "No se encontro Ningun viaje\n"
+                + "con el consecutivo: " + consecutivo, "Alerta", 2);
+        return "";
+    }
+
+    /*----------Cancelar Solicitud de viaje----------*/
+    
+    /**
+     * Este metodo unsca un Viaje en especifico y cambia su estado a Cancelado y
+     * si el viaje esta en Aprovado enviara mensajes a los interesados
+     *
+     * @param consecutivo:String
+     * @return boolean
+     */
+    public boolean CancelarSolicitudViaje(String consecutivo) {
+        for (Viaje temporal : viajes) {
+            if (temporal.getConsecutivo().equals(consecutivo)) {
+                if(temporal.getEstado().equals("Aprobado")){
+                   /*Aque irian el metodo de enviar mensaje a los interesados*/
+                }
+                
+                temporal.setEstado("Cancelado");
+                    
+                return true;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "No se encontro Ningun viaje\n"
+                + "con el consecutivo: " + consecutivo, "Alerta", 2);
+        return false;
+    }
+    
+    /*----------Metodos Especialisados Administrador----------*/
+    
+    /*----------Registrar Chofer Nuevo----------*/
+    
+    /**
+     * este metodo se encaraga de llamar a otro metodo de validacion y si el 
+     * chofer es apto sera agregado a la base de datos
+     * 
+     * @param entrada:Chofer
+     * @return boolean
+     */
+    public boolean RegistrarChoferNuevo(Chofer entrada){
+        if(ValidarChoferNuevo(entrada)){
+            choferes.add(entrada);
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Metodo encargado de validar la variable de tipo Chofer para ver si
+     * se podra registrar dentro de los datos
+     * 
+     * @param entrada:Chofer
+     * @return boolean
+     */
+    public boolean ValidarChoferNuevo(Chofer entrada){
+        // validacion de que el chofer tenga al menos una licencia
+        if(entrada.getLicencias().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se puede agregar Chofer\n"
+                    + "sin ninguna licencia", "Alerta", 2);
+            return false;
+        }
+        // validacion de ficha de vencimiento de la(s) licencias
+        for(Licencia temporal:entrada.getLicencias()){
+            try{
+            SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+            Date fechaActual = new Date();
+            Date fechatemp = traductor.parse(temporal.getFechaExpiracion());
+                if(fechatemp.before(fechaActual) && fechatemp.equals(fechaActual)){
+                    JOptionPane.showMessageDialog(null,"No se puede agregar Chofer\n"
+                    + "con una licencia Vencida\n"
+                    + "Licencia: "+temporal.getNumero(),
+                    "Alerta", 2);
+                    return false;
+                }
+            }
+            catch(HeadlessException | ParseException e){
+                System.out.println("Error");
+            }
+        }
+        return true;
+    }
+    
+    /*----------Registrar Nuevo Vehiculo----------*/
+    
+    /**
+     * Este metodo se encarga de llamar al metodo ValidarVehiculoNuevo y si el
+     * vehiculo es cumple con ntodos los requerimientos sera agregado al sistema
+     * 
+     * @param entrada:Vehiculo
+     * @return boolean
+     */
+    public boolean RegistrarVehiculoNuevo(Vehiculo entrada){
+        if(ValidarVehiculoNuevo(entrada)){
+            vehiculos.add(entrada);
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Metodo encargado de validar un Si un vehiculo nuevo es apto de ser
+     * agregado al sistema
+     * 
+     * @param entrada:Vehiculo
+     * @return boolean
+     */
+    public boolean ValidarVehiculoNuevo(Vehiculo entrada){
+        //Valida si el vehiculo no tiene un numero VIN repetido
+        for(Vehiculo temporal:vehiculos){
+            if(temporal.getNúmeroVin()==entrada.getNúmeroVin()){
+                JOptionPane.showMessageDialog(null,"No se puede agregar Vehiculo\n"
+                    + "Con un nuemro VIN ya existente", "Alerta", 2);
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /*----------Fin de la clase---------*/
 }

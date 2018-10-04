@@ -1,5 +1,6 @@
 package aplicacion;
 
+import Logica.ControladorPrincipal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,9 +10,12 @@ import java.util.logging.Logger;
 
 /**
  *
+ * @author Carlos Abdres Montero
  * @author Justin
  */
 public class implementacion {
+    
+    public static ControladorPrincipal miControlador=new ControladorPrincipal();
 
     public static void main(String args[]) {
         /*  
