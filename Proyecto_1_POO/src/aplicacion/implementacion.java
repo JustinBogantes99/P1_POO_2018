@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +32,7 @@ public class implementacion {
             //nuevo = Chofe.getLicencias();
             System.out.println(Chofe.getLicencias());
         }*/
-        SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+        /*SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
         Date fechaActrual = new Date();
         Date fechatemp;
         try {
@@ -52,5 +53,25 @@ public class implementacion {
         } catch (ParseException ex) {
             Logger.getLogger(implementacion.class.getName()).log(Level.SEVERE, null, ex);
         }
+       Random rand = new Random();
+        //Genera un random de 8 a 12 para ver el tamano de la contrasena
+        int numeroRandom = rand.nextInt(25);
+        
+       String salida="";
+       String Alfabeto="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       salida=Alfabeto.charAt(0)+"";
+       System.out.println(salida);
+       
+        Secretaria nuevaSecretaria = new Secretaria();
+        nuevaSecretaria.setNombreUsuario("qwerty");
+        
+        Secretaria nuevaSecretaria2 = nuevaSecretaria;
+        
+        System.out.println(nuevaSecretaria.getPassword());
+        System.out.println(miControlador.getMiTec().AgregarSecretariaNUeva(nuevaSecretaria));
+        System.out.println(miControlador.getMiTec().AgregarSecretariaNUeva(nuevaSecretaria2));
+        */
+        miControlador.IniciarPrograma();
+        
     }
 }

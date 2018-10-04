@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import UI.frmLogin;
 import aplicacion.Tec;
 
 /**
@@ -14,6 +15,8 @@ import aplicacion.Tec;
 public class ControladorPrincipal {
     /*----------Variable(s) de la clase----------*/
     private Tec miTec;
+    private frmLogin miVentanaLogeo;
+    //private Tec miTec;
     
     /*----------Constructor(es)----------*/
     /**
@@ -42,6 +45,14 @@ public class ControladorPrincipal {
     
     /*----------Metodos Especiializados----------*/
     
+    public void IniciarPrograma(){
+        /*Cargar XML*/
+        
+        miVentanaLogeo= new frmLogin();
+        miVentanaLogeo.CargadorVentana();
+        miVentanaLogeo.setVisible(true);
+    
+    }
     
     
     /*----------Fin de la clase----------*/

@@ -5,6 +5,8 @@
  */
 package aplicacion;
 
+import java.util.Random;
+
 /**
  *
  * @author Carlos Andres Montero
@@ -27,6 +29,8 @@ public class Secretaria {
      * Contructor default de la clase
      */
     public Secretaria() {
+        this.password = GeneradorContrasena();
+    
     }
 
     //----------Setters y Getters----------//
@@ -145,6 +149,83 @@ public class Secretaria {
     public boolean CancelarSolicitudViaje(String consecutivo) {
         return implementacion.miControlador.getMiTec().
                 CancelarSolicitudViaje(consecutivo);
+    }
+    
+     /**
+      * Este metodo genera una contrasena de 8 a 12 caracteres aleatorios 
+      * alternando con mayusculas y minusculas numeros y un caracter especial
+      * 
+      * @return String 
+      */
+    public String GeneradorContrasena(){
+        String acum = "";
+        
+        /*Cuerpo de la contrasena de 8 a 12
+        1: carater especial( ! # $ ? @ ^ ~)
+        3: numeros
+        4 a 8: caracteres normales Alternando en MAyuscylas y minusculas
+        */
+        
+        //generador de numero random
+        Random rand = new Random();
+        //Genera un random de 8 a 12 para ver el tamano de la contrasena
+        int numeroRandom = rand.nextInt( 12 - 8 )+8;
+        int iteraciones = numeroRandom - 4;
+        // Genera de 4 a 8 caracters aleatorios alternando en Mayusculas y Minusculas
+        for(int i = 0 ; i < iteraciones;i++ ){
+            numeroRandom  = rand.nextInt(25);
+            if( (i % 2) == 0){
+                acum += GeneradorMayuscula(numeroRandom);
+            }
+            else{
+                acum += GeneradorMisnuscula(numeroRandom);
+            }
+        }
+        
+        //Genera 3 numeros aleatorios 
+        numeroRandom  = rand.nextInt(999);
+        acum += numeroRandom+"";
+        //Genera un caracter especial aleatorio
+        numeroRandom  = rand.nextInt(6);
+        acum += GeneradorCaracterEspecial(numeroRandom);
+        
+        return acum;
+    }
+    
+    /**
+     * Genera una letra Minuscula aleatoria
+     * @param munero:int
+     * @return String
+     */
+    public String GeneradorMisnuscula(int munero){
+       String salida="";
+       String Alfabeto="abcdefghijklmnopqrstuvwxyz";
+       salida=Alfabeto.charAt(munero)+"";
+       return salida;
+    }
+    
+    /**
+     * Genera una letra Mayuscula aleatoria
+     * @param munero:
+     * @return String
+     */
+    public String GeneradorMayuscula(int munero){
+       String salida="";
+       String Alfabeto="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       salida=Alfabeto.charAt(munero)+"";
+       return salida;
+    }
+    
+    /**
+     * Genera un caracter especial; aleatorio
+     * @param munero:int
+     * @return String
+     */
+    public String GeneradorCaracterEspecial(int munero){
+       String salida="";
+       String Alfabeto="!#$?@^~";
+       salida=Alfabeto.charAt(munero)+"";
+       return salida;
     }
 
     //----------Fin de la clase----------//

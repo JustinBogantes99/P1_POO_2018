@@ -29,10 +29,19 @@ public class Tec {
 
     /*----------Contructor(es)----------*/
     /**
-     * Constructor Default de la clase
+     * Constructor Default de la clase pata pruebas
      */
+
     public Tec() {
+        this.secretarias = new ArrayList();
+        this.administradores = new ArrayList();
+        this.vehiculos = new ArrayList();
+        this.viajes = new ArrayList();
+        this.choferes = new ArrayList();
+        this.Usuarios = new ArrayList();
     }
+    
+    
 
     /*----------Setters y Getters----------*/
     /**
@@ -720,8 +729,29 @@ public class Tec {
         return false;
     }
     //----------Registrar nueva Secretaria----------//
-    
-    
+    /**
+     * Estre metodo agrena una nueva secretaria
+     * @param entrada
+     * @return 
+     */
+    public boolean AgregarSecretariaNUeva(Secretaria entrada){
+        if(ValidarSecretatiaNueva(entrada)){
+            return secretarias.add(entrada);
+        }
+        return false;
+    }
+    public boolean ValidarSecretatiaNueva(Secretaria entrada){
+        for(Secretaria temp:secretarias){
+            if(entrada.getNombreUsuario().equals(temp.getNombreUsuario())){
+                JOptionPane.showMessageDialog(null, "No se puede agregar una Secretariar\n"
+                                + "que con ese Usuario: " +entrada.getNombreUsuario(),
+                                "Alerta", 2);
+                return false;
+            }
+        }
+        
+        return true;
+    }
 
     /*----------Fin de la clase---------*/
 }
