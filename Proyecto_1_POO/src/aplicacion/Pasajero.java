@@ -1,9 +1,12 @@
 package aplicacion;
 
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Justin
  */
+@XmlType()
 public class Pasajero {
     
     private String nombreCompleto;
@@ -12,6 +15,10 @@ public class Pasajero {
     private String correoElectronico;
     private int telefono;
 
+    public Pasajero() {
+    }
+    
+    
     public Pasajero(String nombreCompleto, int cedula, String direccion, String correoElectronico) {
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;

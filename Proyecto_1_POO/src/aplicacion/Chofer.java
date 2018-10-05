@@ -1,10 +1,12 @@
 package aplicacion;
 //import java.util.Scanner;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlType;
 /**
  *
  * @author Justin
  */
+@XmlType()
 public class Chofer {
     
     private String nombreCompleto;

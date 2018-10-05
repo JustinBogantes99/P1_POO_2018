@@ -1,9 +1,12 @@
 package aplicacion;
 
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Justin
  */
+@XmlType()
 public class Licencia {
     private int numero;
     private String fechaEmision;

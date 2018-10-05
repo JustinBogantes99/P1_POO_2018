@@ -1,9 +1,11 @@
 package aplicacion;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlType;
 /**
  *
  * @author Justin
  */
+@XmlType()
 public class Vehiculo {
     
     private int placa;

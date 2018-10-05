@@ -6,12 +6,14 @@
 package aplicacion;
 
 import java.util.Random;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Carlos Andres Montero
  * @author Justin
  */
+@XmlType()
 public class Secretaria {
     //----------Variables de la Clase----------//
     

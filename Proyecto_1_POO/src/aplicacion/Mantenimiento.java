@@ -1,9 +1,11 @@
 package aplicacion;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlType;
 /**
  *
  * @author Justin
  */
+@XmlType()
 public class Mantenimiento {
     
     private String Tipo;

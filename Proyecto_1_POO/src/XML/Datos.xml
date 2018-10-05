@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tec>
+    <secretarias>
+        <nombreUsuario>q</nombreUsuario>
+        <password>q</password>
+        <telefono>0</telefono>
+    </secretarias>
+    <usuarios>
+        <cedula>1</cedula>
+        <correoElectronico>1</correoElectronico>
+        <direccion>1</direccion>
+        <nombreCompleto>1</nombreCompleto>
+        <telefono>1</telefono>
+    </usuarios>
+    <usuarios>
+        <cedula>2</cedula>
+        <correoElectronico>2</correoElectronico>
+        <direccion>2</direccion>
+        <nombreCompleto>2</nombreCompleto>
+        <telefono>2</telefono>
+    </usuarios>
+    <usuarios>
+        <cedula>3</cedula>
+        <correoElectronico>3</correoElectronico>
+        <direccion>3</direccion>
+        <nombreCompleto>3</nombreCompleto>
+        <telefono>3</telefono>
+    </usuarios>
+    <viajes>
+        <consecutivo>IVA-0</consecutivo>
+        <estado>Confeccion</estado>
+        <fechaFinalizacion>2018-11-11T00:00:00-06:00</fechaFinalizacion>
+        <fechaInicio>2018-11-11T00:00:00-06:00</fechaInicio>
+        <fechaSolicitud>2018-10-06T00:00:00-06:00</fechaSolicitud>
+        <kilometrajeFinal>0.0</kilometrajeFinal>
+        <kilometrajeInicial>0.0</kilometrajeInicial>
+        <pasajeros>
+            <cedula>1</cedula>
+            <correoElectronico>1</correoElectronico>
+            <direccion>1</direccion>
+            <nombreCompleto>1</nombreCompleto>
+            <telefono>1</telefono>
+        </pasajeros>
+        <puntoSalida>chepe</puntoSalida>
+    </viajes>
+</tec>

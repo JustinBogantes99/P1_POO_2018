@@ -61,16 +61,8 @@ public class implementacion {
        String Alfabeto="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
        salida=Alfabeto.charAt(0)+"";
        System.out.println(salida);
-       
-        Secretaria nuevaSecretaria = new Secretaria();
-        nuevaSecretaria.setNombreUsuario("qwerty");
+       */
         
-        Secretaria nuevaSecretaria2 = nuevaSecretaria;
-        
-        System.out.println(nuevaSecretaria.getPassword());
-        System.out.println(miControlador.getMiTec().AgregarSecretariaNUeva(nuevaSecretaria));
-        System.out.println(miControlador.getMiTec().AgregarSecretariaNUeva(nuevaSecretaria2));
-        */
         miControlador.IniciarPrograma();
         
     }

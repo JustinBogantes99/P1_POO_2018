@@ -1,8 +1,12 @@
 package aplicacion;
+
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Justin
  */
+@XmlType()
 public class Empresa {
     
     private String razonSocial;

@@ -31,7 +31,6 @@ public class Tec {
     /**
      * Constructor Default de la clase pata pruebas
      */
-
     public Tec() {
         this.secretarias = new ArrayList();
         this.administradores = new ArrayList();
@@ -40,8 +39,6 @@ public class Tec {
         this.choferes = new ArrayList();
         this.Usuarios = new ArrayList();
     }
-    
-    
 
     /*----------Setters y Getters----------*/
     /**
@@ -164,6 +161,7 @@ public class Tec {
     public boolean RegistrarPasajero(Pasajero entrada) {
         if (ValidarPasajero(entrada)) {
             Usuarios.add(entrada);
+            implementacion.miControlador.CrearXML();
             return true;
         }
         return false;
@@ -179,6 +177,11 @@ public class Tec {
     public boolean ValidarPasajero(Pasajero entrada) {
         for (Pasajero temp : Usuarios) {
             if (temp.getCedula() == entrada.getCedula()) {
+                JOptionPane.showMessageDialog(null, "El pasajero: "
+                        + entrada.getNombreCompleto() + "\n Cedula: "
+                        + entrada.getCedula()
+                        + "\nya Existe dentro del sistema",
+                        "ALERTA", 2);
                 return false;
             }
         }
@@ -196,8 +199,10 @@ public class Tec {
     public boolean SolicitarViaje(Viaje entrada) {
         if (VaidarViaje(entrada)) {
             viajes.add(entrada);
+            implementacion.miControlador.CrearXML();
             return true;
         }
+        System.out.println("AquiNo agrego");
         return false;
     }
 
@@ -211,33 +216,41 @@ public class Tec {
      */
     public boolean VaidarViaje(Viaje entrada) {
         //Valida si algun pasajero tiene choque de Fechas con otro Viaje
-        for (Viaje temp : viajes) {
-            for (Pasajero pasajeroEntrada : entrada.getPasajeros()) {
+        
+            for (Viaje temp : viajes) {
+                System.out.println("Bandera viajes");
+
                 for (Pasajero pasajeroRegistrado : temp.getPasajeros()) {
-                    if (pasajeroEntrada.getCedula() == pasajeroRegistrado.getCedula()) {
-                        if (ValidarFechasPasajero(entrada, temp)) {
-                            JOptionPane.showMessageDialog(null, "El pasajero: "
-                                    + pasajeroEntrada.getNombreCompleto() + "\n Cedula: "
-                                    + pasajeroEntrada.getCedula()
-                                    + "\nPresenta choque con la fecha de otro viaje",
-                                    "ALERTA", 2);
-                            return false;
+               
+                    for (Pasajero pasajeroEntrada : entrada.getPasajeros()) {
+                        
+                        if (pasajeroEntrada.getCedula() == pasajeroRegistrado.getCedula()) {
+                           
+                            if (ValidarFechasPasajero(entrada, temp)) {
+                                JOptionPane.showMessageDialog(null, "El pasajero: "
+                                        + pasajeroEntrada.getNombreCompleto() + "\n Cedula: "
+                                        + pasajeroEntrada.getCedula()
+                                        + "\nPresenta choque con la fecha de otro viaje",
+                                        "ALERTA", 2);
+                                return false;
+                            }
                         }
                     }
                 }
+
             }
-        }
-        //fecha de inicio de solicitud tiene que tener porlomenos 24 horas antes
-        if (ValidarFechaSolicitud(entrada)) {
-            return false;
-        }
-        //Valida la cantidad de pasdajeros que tiene
-        if (entrada.getPasajeros().size() < 1) {
-            JOptionPane.showMessageDialog(null, "La cantidad minima de pasajeros\n"
-                    + "tiene que ser de 1",
-                    "ALERTA", 2);
-            return false;
-        }
+            //fecha de inicio de solicitud tiene que tener porlomenos 24 horas antes
+            if (ValidarFechaSolicitud(entrada)) {
+                return false;
+            }
+            //Valida la cantidad de pasdajeros que tiene
+            if (entrada.getPasajeros().size() < 1) {
+                JOptionPane.showMessageDialog(null, "La cantidad minima de pasajeros\n"
+                        + "tiene que ser de 1",
+                        "ALERTA", 2);
+                return false;
+            }
+        
         //Si se cumplieron todos los requisitos retorna true
         return true;
     }
@@ -254,12 +267,24 @@ public class Tec {
         //SimpleDateFormat traductor = new SimpleDateFormat("dd/MM/YYYY");
         Date fechaInicioViajeNuevo = viajeNuevo.getFechaInicio();
         Date fechaFinViajeNuevo = viajeNuevo.getFechaFinalizacion();
-        if (fechaInicioViajeNuevo.after(viajeExistente.getFechaInicio())
-                && fechaInicioViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
+        
+        Date fechaInicioViajeExistente = viajeExistente.getFechaInicio();
+        Date fechaFinViajeExistente = viajeExistente.getFechaFinalizacion();
+        
+        /*System.out.println(fechaInicioViajeNuevo);
+        System.out.println(fechaFinViajeNuevo);
+        */
+        if ((fechaInicioViajeNuevo.after(fechaInicioViajeExistente)||
+                fechaInicioViajeNuevo.equals(fechaInicioViajeExistente))
+                ||(fechaInicioViajeNuevo.before(fechaFinViajeExistente)
+                ||fechaInicioViajeNuevo.equals(fechaFinViajeExistente))) {
             return true;
         }
-        if (fechaFinViajeNuevo.after(viajeExistente.getFechaInicio())
-                && fechaFinViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
+        
+        if ((fechaFinViajeNuevo.after(fechaInicioViajeExistente)||
+                fechaFinViajeNuevo.equals(fechaInicioViajeExistente))
+                ||(fechaFinViajeNuevo.before(fechaFinViajeExistente)
+                ||fechaFinViajeNuevo.equals(fechaFinViajeExistente))) {
             return true;
         }
 
@@ -277,7 +302,8 @@ public class Tec {
         Date fechaMasHoras = entrada.getFechaSolicitud();
         //Se agregan 24 horas a la fecha de peticion
         fechaMasHoras.setHours(fechaMasHoras.getHours() + 24);
-        if (fechaMasHoras.equals(entrada.getFechaInicio()) && fechaMasHoras.after(entrada.getFechaInicio())) {
+        if (fechaMasHoras.after(entrada.getFechaInicio()) 
+                || fechaMasHoras.equals(entrada.getFechaInicio())) {
             JOptionPane.showMessageDialog(null, "No se puede Solicitar un viaje\n"
                     + "que no tenga minimo mas de 24 horas\n"
                     + "antes de su hora de salida",
@@ -581,10 +607,10 @@ public class Tec {
     }
 
     //----------Aprobar Solicitud de viaje----------//
-    
     /**
-     * Este metodo se llama de validar los datos de entrada para aprovar una 
+     * Este metodo se llama de validar los datos de entrada para aprovar una
      * solicitud y luego envia un correo a los interesados;
+     *
      * @param estradaChofer:Chofer
      * @param entradaVehiculo:Vehiculo
      * @param entradaIdViaje:String
@@ -609,7 +635,7 @@ public class Tec {
                     ViajePorAprobar.setVehiculoAsignado(entradaVehiculo);
                     /*Aqie se notificara por correo a los interesados que el viaje
                     fue Aprovado*/
-                    
+
                     return true;
                 }
             }
@@ -617,10 +643,11 @@ public class Tec {
 
         return false;
     }
+
     /**
      * Este metodo llama la los metodos que validan tanto al chofer como al
      * Vehiculo
-     * 
+     *
      * @param entradaViaje:Viaje
      * @param estradaChofer:Chofer
      * @param entradaVehiculo:Vehiculo
@@ -717,40 +744,104 @@ public class Tec {
         //SimpleDateFormat traductor = new SimpleDateFormat("dd/MM/YYYY");
         Date fechaInicioViajeNuevo = viajeNuevo.getFechaInicio();
         Date fechaFinViajeNuevo = viajeNuevo.getFechaFinalizacion();
-        if (fechaInicioViajeNuevo.after(viajeExistente.getFechaInicio())
-                && fechaInicioViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
+        
+         Date fechaInicioViajeExistente = viajeExistente.getFechaInicio();
+        Date fechaFinViajeExistente = viajeExistente.getFechaFinalizacion();
+        
+        if ((fechaInicioViajeNuevo.after(fechaInicioViajeExistente)||
+                fechaInicioViajeNuevo.equals(fechaInicioViajeExistente))
+                ||(fechaInicioViajeNuevo.before(fechaFinViajeExistente)
+                ||fechaInicioViajeNuevo.equals(fechaFinViajeExistente))) {
             return true;
         }
-        if (fechaFinViajeNuevo.after(viajeExistente.getFechaInicio())
-                && fechaFinViajeNuevo.before(viajeExistente.getFechaFinalizacion())) {
+        if ((fechaFinViajeNuevo.after(fechaInicioViajeExistente)||
+                fechaFinViajeNuevo.equals(fechaInicioViajeExistente))
+                ||(fechaFinViajeNuevo.before(fechaFinViajeExistente)
+                ||fechaFinViajeNuevo.equals(fechaFinViajeExistente))){
             return true;
         }
 
         return false;
     }
+
     //----------Registrar nueva Secretaria----------//
     /**
      * Estre metodo agrena una nueva secretaria
+     *
      * @param entrada
-     * @return 
+     * @return
      */
-    public boolean AgregarSecretariaNUeva(Secretaria entrada){
-        if(ValidarSecretatiaNueva(entrada)){
+    public boolean AgregarSecretariaNUeva(Secretaria entrada) {
+        if (ValidarSecretatiaNueva(entrada)) {
             return secretarias.add(entrada);
         }
         return false;
     }
-    public boolean ValidarSecretatiaNueva(Secretaria entrada){
-        for(Secretaria temp:secretarias){
-            if(entrada.getNombreUsuario().equals(temp.getNombreUsuario())){
+
+    public boolean ValidarSecretatiaNueva(Secretaria entrada) {
+        for (Secretaria temp : secretarias) {
+            if (entrada.getNombreUsuario().equals(temp.getNombreUsuario())) {
                 JOptionPane.showMessageDialog(null, "No se puede agregar una Secretariar\n"
-                                + "que con ese Usuario: " +entrada.getNombreUsuario(),
-                                "Alerta", 2);
+                        + "que con ese Usuario: " + entrada.getNombreUsuario(),
+                        "Alerta", 2);
                 return false;
             }
         }
-        
+
         return true;
+    }
+
+    /*----------Metodos especialisados U.I----------*/
+//----------Validar Usuario Administrador----------//
+    public boolean ValidarUsuarioAdministrador(String usuario, String password) {
+        for (Administrador temp : administradores) {
+            if (temp.getNombreUsuario().equals(usuario)) {
+                if (temp.getPassword().equals(password)) {
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contraseña no es valida",
+                            "Alerta", 2);
+
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+    //----------Validar Usuario Secretaria----------//
+    public boolean ValidarUsuarioSecretaria(String usuario, String password) {
+        for (Secretaria temp : secretarias) {
+            if (temp.getNombreUsuario().equals(usuario)) {
+                if (temp.getPassword().equals(password)) {
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contraseña no es valida",
+                            "Alerta", 2);
+
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+    //----------Cargador Secretaria----------//
+    /**
+     * Este metodo busca una secretaria en espesifico y la retorna
+     *
+     * @param usuario:String
+     * @return Secretaria
+     */
+    public Secretaria CargarSecretaria(String usuario) {
+        for (Secretaria temp : secretarias) {
+            if (temp.getNombreUsuario().equals(usuario)) {
+                return temp;
+            }
+        }
+        return null;
     }
 
     /*----------Fin de la clase---------*/

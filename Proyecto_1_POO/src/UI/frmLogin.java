@@ -5,9 +5,11 @@
  */
 package UI;
 
+import aplicacion.*;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,7 +140,21 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfSecreUsuarioActionPerformed
 
     private void btnIngresarSecretariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarSecretariaActionPerformed
-        // TODO add your handling code here:
+        String usuario = jtfSecreUsuario.getText();
+        String password = jtfSecreUsuario.getText();
+        
+        if(implementacion.miControlador.ValidarUsuarioSecretaria(usuario, 
+                password)){
+            System.out.println("Usuario Aceptado");
+            Secretaria temp = implementacion.miControlador.
+                    CargarSecretaria(usuario);
+            implementacion.miControlador.CargarVentanaSecretaria(temp);
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado",
+                            "Alerta", 2);
+        }
+        
     }//GEN-LAST:event_btnIngresarSecretariaActionPerformed
 
     /**

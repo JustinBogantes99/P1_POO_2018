@@ -2,12 +2,14 @@ package aplicacion;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Carlos Andres Montero
  * @author Justin
  */
+@XmlType()
 public class Viaje {
 
     private String puntoSalida;
@@ -29,7 +31,12 @@ public class Viaje {
      * Contructor default
      */
     public Viaje() {
+        this.estado="Confeccion";
+        this.choferAsignado=null;
+        this.vehiculoAsignado=null;
     }
+    
+    
 
     public String getPuntoSalida() {
         return puntoSalida;
