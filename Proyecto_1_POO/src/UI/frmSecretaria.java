@@ -406,14 +406,14 @@ public class frmSecretaria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPasajeroActionPerformed
-        try {
+       try {
             if (ValidarCamposAgregarUsuario()) {
                 Pasajero nuevoPasajero = new Pasajero();
                 nuevoPasajero.setNombreCompleto(jtfRegistrarNombre.getText());
                 nuevoPasajero.setCedula(Integer.parseInt(jtfRegistrarCedula.getText()));
                 nuevoPasajero.setDireccion(jtfRegistrarDireccion.getText());
                 nuevoPasajero.setCorreoElectronico(jtfRegistrarCorreo.getText());
-                nuevoPasajero.setTelefono(Integer.parseInt(jtfRegistrarNombre.getText()));
+                nuevoPasajero.setTelefono(Integer.parseInt(jtfRegistrarTelefono.getText()));
 
                 if (usuarioActual.RegistrarPasajero(nuevoPasajero)) {
                     JOptionPane.showMessageDialog(null, "Pasajero Registrado Exitosamente",
@@ -426,9 +426,9 @@ public class frmSecretaria extends javax.swing.JFrame {
                             "Alerta", 0);
                     //Borrar Campos
                 }
-            }
+           }
 
-        } catch (NumberFormatException nfe) {
+       } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "El campo de cedula o Telefono\n"
                     + "solo pueden tener numeros", "Alerta", 2);
         }

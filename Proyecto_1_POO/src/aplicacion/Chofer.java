@@ -1,29 +1,25 @@
 package aplicacion;
 //import java.util.Scanner;
-import java.util.ArrayList;
+
+import java.util.*;
 import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Justin
  */
 @XmlType()
 public class Chofer {
-    
+
     private String nombreCompleto;
     private int telefono;
     private String correo;
     private int cedula;
-    private ArrayList<Licencia>licencias;
+    private List<Licencia> licencias;
 
-    public Chofer(String nombreCompleto, int telefono, String correo, int cedula, ArrayList<Licencia> licencias) {
-        this.nombreCompleto = nombreCompleto;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.cedula = cedula;
-        this.licencias = licencias;
+    public Chofer() {
     }
-    
-    
+
     public String getNombreCompleto() {
         return nombreCompleto;
     }
@@ -56,13 +52,14 @@ public class Chofer {
         this.cedula = cedula;
     }
 
-    public ArrayList<Licencia> getLicencias() {
+    public List<Licencia> getLicencias() {
         return licencias;
     }
 
-    public void setLicencias(ArrayList<Licencia> licencias) {
+    public void setLicencias(List<Licencia> licencias) {
         this.licencias = licencias;
     }
-    
-    
+
+  
+
 }

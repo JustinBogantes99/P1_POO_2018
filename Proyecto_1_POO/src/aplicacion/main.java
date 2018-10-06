@@ -19,15 +19,26 @@ public class main {
     public static ControladorPrincipal miControlador=new ControladorPrincipal();
 
     public static void main(String args[]) {
-         /*Secretaria nuevaSecretaria = new Secretaria();
+        /* Secretaria nuevaSecretaria = new Secretaria();
          nuevaSecretaria.setNombreCompleto("qwerty");
          nuevaSecretaria.setNombreUsuario("a");
          nuevaSecretaria.setDepartamento("Computacion");
          nuevaSecretaria.setCorreoElectronico("qwerty@dominio.com");
          nuevaSecretaria.setTelefono(22222222);
         miControlador.getMiTec().getSecretarias().add(nuevaSecretaria);
-        miControlador.CrearXML();*/
+       
+         
+         Administrador nuevoAdmin= new Administrador();
+         nuevoAdmin.setNombreCompleto("SSDesth");
+         nuevoAdmin.setNombreUsuario("q");
+         nuevoAdmin.setDepartamento("Computacion");
+         nuevoAdmin.setTelefono(72907236);
+         nuevoAdmin.setPassword("q");
         
+        
+         miControlador.getMiTec().getAdministradores().add(nuevoAdmin);
+        
+          miControlador.CrearXML();*/
        miControlador.IniciarPrograma();
         
     }

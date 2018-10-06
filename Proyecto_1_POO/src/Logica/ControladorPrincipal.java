@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import UI.frmAdministrados;
 import UI.frmLogin;
 import UI.frmSecretaria;
 import aplicacion.*;
@@ -20,119 +21,149 @@ import javax.xml.bind.Unmarshaller;
  * @author SSDesth
  */
 public class ControladorPrincipal {
+
     /*----------Variable(s) de la clase----------*/
     private Tec miTec;
     private frmLogin miVentanaLogeo;
     private frmSecretaria miVentanaSecretaria;
-    
+    private frmAdministrados miVentanaAdministrador;
+
     /*----------Constructor(es)----------*/
     /**
      * contructor default de la clase
      */
     public ControladorPrincipal() {
-        this.miTec= new Tec();
+        this.miTec = new Tec();
     }
 
     /*----------Setters y Getters----------*/
     /**
      * Get de la variable miTec
+     *
      * @return Tec
      */
     public Tec getMiTec() {
         return miTec;
     }
-    
+
     /**
      * Set de la variable miTec
+     *
      * @param miTec:Tec
      */
     public void setMiTec(Tec miTec) {
         this.miTec = miTec;
     }
-    
+
     /*----------Metodos Especiializados----------*/
-   /**
-    * Este metodo Carga la primera ventana del programa
-    */ 
-    public void IniciarPrograma(){
+    /**
+     * Este metodo Carga la primera ventana del programa junto con la carga de
+     * archivos
+     */
+    public void IniciarPrograma() {
         /*Cargar XML*/
         leerXML("src/XML/Datos.xml");
         CargarVentanaloggin();
-    
-    }
-    public void CargarVentanaloggin(){
 
-        miVentanaLogeo= new frmLogin();
+    }
+
+    /**
+     * este metodo Carga el frm de loggin
+     */
+    public void CargarVentanaloggin() {
+
+        miVentanaLogeo = new frmLogin();
         miVentanaLogeo.CargadorVentana();
         miVentanaLogeo.setVisible(true);
-    
+
     }
+
     /**
-     * 
-     * @param entrada 
+     * este metodo carga el frmSecretaria
+     *
+     * @param entrada:Secretaria
      */
-    public void CargarVentanaSecretaria(Secretaria entrada){
-        miVentanaLogeo.dispose(); 
+    public void CargarVentanaSecretaria(Secretaria entrada) {
+        miVentanaLogeo.dispose();
         miVentanaSecretaria = new frmSecretaria();
         miVentanaSecretaria.CargadorVentana(entrada);
         miVentanaSecretaria.setVisible(true);
-    
+
     }
-    
-    /*----------Metodos especialisados U.I----------*/
-    
-    /*----------Validar Usuario Administrador----------*/
+
     /**
-     * Este metofo se encarga de hacer un llamado a mitec y validar si el 
+     * este metodo carga el frmAdministrador
+     *
+     * @param entrada:Administrador
+     */
+    public void CargarVentanaAdministrador(Administrador entrada) {
+        miVentanaLogeo.dispose();
+        miVentanaAdministrador = new frmAdministrados();
+        miVentanaAdministrador.CargadorVentana(entrada);
+        miVentanaAdministrador.setVisible(true);
+
+    }
+
+    /*----------Metodos especialisados U.I----------*/
+ /*----------Validar Usuario Administrador----------*/
+    /**
+     * Este metofo se encarga de hacer un llamado a mitec y validar si el
      * usuario y la contrasena son correctas
-     * 
+     *
      * @param usuario:String
      * @param password:String
      * @return boolean
      */
-    public boolean ValidarUsuarioAdministrador(String usuario, String password){
-        return  miTec.ValidarUsuarioAdministrador(usuario, password);
+    public boolean ValidarUsuarioAdministrador(String usuario, String password) {
+        return miTec.ValidarUsuarioAdministrador(usuario, password);
     }
-    
+
     /*----------Validar Usuario Secretaria----------*/
     /**
-     * Este metofo se encarga de hacer un llamado a mitec y validar si el 
+     * Este metofo se encarga de hacer un llamado a mitec y validar si el
      * usuario y la contrasena son correctas
-     * 
+     *
      * @param usuario:String
      * @param password:String
      * @return boolean
      */
-    public boolean ValidarUsuarioSecretaria(String usuario, String password){
-        return  miTec.ValidarUsuarioSecretaria(usuario, password);
+    public boolean ValidarUsuarioSecretaria(String usuario, String password) {
+        return miTec.ValidarUsuarioSecretaria(usuario, password);
     }
-    
+
     /**
-     * este metodo Carga una secretaria para su uso en 
-     * el frm Secretaria
-     * 
+     * este metodo Carga una secretaria para su uso en el frm Secretaria
+     *
      * @param usuario:String
      * @return Secretaria
      */
-    public Secretaria CargarSecretaria(String usuario){
+    public Secretaria CargarSecretaria(String usuario) {
         return miTec.CargarSecretaria(usuario);
     }
-    
+
     /**
-     * este metodo obtiene los pasajeros que existen
-     * dentro del programa
+     * este metodo Carga una secretaria para su uso en el frm Secretaria
+     *
+     * @param usuario:String
+     * @return Secretaria
+     */
+    public Administrador CargarAdministrador(String usuario) {
+        return miTec.CargarAdministrador(usuario);
+    }
+
+    /**
+     * este metodo obtiene los pasajeros que existen dentro del programa
+     *
      * @return List
      */
-    public List<Pasajero> ObtenerListaUsuarios(){
+    public List<Pasajero> ObtenerListaUsuarios() {
         return miTec.getUsuarios();
     }
-    
-    
-    
-    
+
     /*----------lectura y escritura Archivos----------*/
     /**
      * Este metodo genera un xml con los datos del programa
+     *
      * @param URL:String
      */
     public void leerXML(String URL) {
@@ -148,23 +179,23 @@ public class ControladorPrincipal {
             System.out.println(ex.toString());
         }
     }
+
     /**
      * Este metodo lee un xml con los datos del programa
      */
-    public void CrearXML(){
+    public void CrearXML() {
         //Contexto de JAXB
-        try{
-        JAXBContext ctx = JAXBContext.newInstance(Tec.class);
-        Marshaller ms = ctx.createMarshaller();
-        
-        ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        ms.marshal(miTec, new File("src/XML/Datos.xml"));
-        
-        }
-        catch(JAXBException ex){
+        try {
+            JAXBContext ctx = JAXBContext.newInstance(Tec.class);
+            Marshaller ms = ctx.createMarshaller();
+
+            ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            ms.marshal(miTec, new File("src/XML/Datos.xml"));
+
+        } catch (JAXBException ex) {
             System.out.println("Error");
         }
     }
-    
+
     /*----------Fin de la clase----------*/
 }

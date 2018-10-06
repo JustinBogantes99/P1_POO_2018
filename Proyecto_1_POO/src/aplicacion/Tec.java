@@ -500,6 +500,7 @@ public class Tec {
     public boolean RegistrarChoferNuevo(Chofer entrada) {
         if (ValidarChoferNuevo(entrada)) {
             choferes.add(entrada);
+             main.miControlador.CrearXML();
             return true;
         }
         return false;
@@ -536,6 +537,16 @@ public class Tec {
                 System.out.println("Error");
             }
         }
+        for(Chofer auxiliar:choferes){
+           if(auxiliar.getCedula() == entrada.getCedula()){
+               JOptionPane.showMessageDialog(null, "No se puede agregar Chofer\n"
+                            + "que ya esxixte en el sistema\n"
+                            + "Licencia: " + entrada.getCedula(),
+                            "Alerta", 2);
+               return false;
+           }
+        }
+        
         return true;
     }
 
@@ -550,6 +561,7 @@ public class Tec {
     public boolean RegistrarVehiculoNuevo(Vehiculo entrada) {
         if (ValidarVehiculoNuevo(entrada)) {
             vehiculos.add(entrada);
+            main.miControlador.CrearXML();
             return true;
         }
         return false;
@@ -634,9 +646,9 @@ public class Tec {
         /*Lo primero sera buscar el vijae que se desea aprobar*/
         Viaje ViajePorAprobar;
         for (Viaje temp : viajes) {
+            
             if (temp.getConsecutivo().equals(entradaIdViaje)) {
                 ViajePorAprobar = temp;
-
                 /*Luego lo que se hara es Validar todas las condiciones nesesarias 
                 antes de aprobar la solicitud*/
                 if (ValidarAprovacionSolicitud(ViajePorAprobar, estradaChofer,
@@ -649,6 +661,8 @@ public class Tec {
                     /*Aqie se notificara por correo a los interesados que el viaje
                     fue Aprovado*/
 
+                    main.miControlador.CrearXML();
+                    
                     return true;
                 }
             }
@@ -786,7 +800,9 @@ public class Tec {
      */
     public boolean AgregarSecretariaNUeva(Secretaria entrada) {
         if (ValidarSecretatiaNueva(entrada)) {
-            return secretarias.add(entrada);
+            secretarias.add(entrada);
+            main.miControlador.CrearXML();
+            return true;
         }
         return false;
     }
@@ -806,6 +822,12 @@ public class Tec {
 
     /*----------Metodos especialisados U.I----------*/
 //----------Validar Usuario Administrador----------//
+    /**
+     * Este metodo valida si el usuario que quiere ingresar al sistema es correcto
+     * @param usuario:String
+     * @param password:String
+     * @return boolean
+     */
     public boolean ValidarUsuarioAdministrador(String usuario, String password) {
         for (Administrador temp : administradores) {
             if (temp.getNombreUsuario().equals(usuario)) {
@@ -824,6 +846,12 @@ public class Tec {
     }
 
     //----------Validar Usuario Secretaria----------//
+    /**
+     * Este metodo valida si el usuario que quiere ingresar al sistema es correcto
+     * @param usuario:String
+     * @param password:String
+     * @return boolean
+     */
     public boolean ValidarUsuarioSecretaria(String usuario, String password) {
         for (Secretaria temp : secretarias) {
             if (temp.getNombreUsuario().equals(usuario)) {
@@ -852,6 +880,23 @@ public class Tec {
      */
     public Secretaria CargarSecretaria(String usuario) {
         for (Secretaria temp : secretarias) {
+            if (temp.getNombreUsuario().equals(usuario)) {
+                return temp;
+            }
+        }
+        return null;
+    }
+
+  
+    //----------Cargador Administrador----------//
+    /**
+     * Este metodo busca un Adminitrador en espesifico y la retorna
+     *
+     * @param usuario:String
+     * @return Administrador
+     */
+    public Administrador CargarAdministrador(String usuario) {
+        for (Administrador temp : administradores) {
             if (temp.getNombreUsuario().equals(usuario)) {
                 return temp;
             }

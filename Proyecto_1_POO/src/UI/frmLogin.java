@@ -130,9 +130,19 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfAdminUsuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+         String usuario = jtfAdminUsuario.getText();
+        String password = jpfAdminContrasenia.getText();
         //jpfAdminContrasenia.getPassword();
-        System.out.println(jpfAdminContrasenia.getText());
+        if(main.miControlador.ValidarUsuarioAdministrador(usuario, 
+                password)){
+            Administrador temporal= main.miControlador.
+                    CargarAdministrador(usuario);
+            main.miControlador.CargarVentanaAdministrador(temporal);
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado",
+                            "Alerta", 2);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtfSecreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSecreUsuarioActionPerformed
@@ -145,7 +155,7 @@ public class frmLogin extends javax.swing.JFrame {
         
         if(main.miControlador.ValidarUsuarioSecretaria(usuario, 
                 password)){
-            System.out.println("Usuario Aceptado");
+            //System.out.println("Usuario Aceptado");
             Secretaria temp = main.miControlador.
                     CargarSecretaria(usuario);
             main.miControlador.CargarVentanaSecretaria(temp);

@@ -16,9 +16,16 @@ public class Vehiculo {
     private double kilometraje;
     private int númeroVin;
     private String sedePertenenciaVehículo;
-    private String estado;
+    private String estado;// (Servicio/Mantenimiento/Fuera de servivio)
     private ArrayList<Mantenimiento>Mantenimientos;
 
+    public Vehiculo() {
+        this.estado="Servicio";
+        this.Mantenimientos= new ArrayList();
+    }
+
+    
+    
     public Vehiculo(int placa, int anioFabricación, String color, String marca, int capacidad, double kilometraje, int númeroVin, String sedePertenenciaVehículo, String estado, ArrayList<Mantenimiento> Mantenimientos) {
         this.placa = placa;
         this.anioFabricación = anioFabricación;

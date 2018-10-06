@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType()
 public class Administrador {
-    
+
     private String nombreCompleto;
     private String departamento;
     private String nombreUsuario;
@@ -54,6 +54,37 @@ public class Administrador {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /*----------Metodos especialisados----------*/
+    /**
+     * este metodo se comunica con la clase tec e intenta registrar un nuevo
+     * chofer
+     *
+     * @param entrada
+     * @return boolean
+     */
+    public boolean RegistrarChoferNuevo(Chofer entrada) {
+        return main.miControlador.getMiTec().RegistrarChoferNuevo(entrada);
+    }
+
+    public boolean RegistrarVehiculoNuevo(Vehiculo entrada) {
+        return main.miControlador.getMiTec().RegistrarVehiculoNuevo(entrada);
+    }
+
+    public String ListarViajesAdministrador() {
+        return main.miControlador.getMiTec().ListarViajesAdministrador();
+    }
     
+    public boolean AprobarSolicitudAdministrador(Chofer estradaChofer, Vehiculo entradaVehiculo,
+            String entradaIdViaje) {
+         return main.miControlador.getMiTec().AprobarSolicitudAdministrador(
+                 estradaChofer, entradaVehiculo, entradaIdViaje);
+    }
+    
+     public boolean AgregarSecretariaNUeva(Secretaria entrada) {
+         return main.miControlador.getMiTec().AgregarSecretariaNUeva(entrada);
+     }
+     
+    /*Consultar datos*/
     
 }
