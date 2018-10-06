@@ -83,6 +83,15 @@ public class Secretaria {
     public void setCorreoElectronico(String CorreoElectronico) {
         this.CorreoElectronico = CorreoElectronico;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombreCompleto +
+                "\nUsuario: " + nombreUsuario+
+                "\nCorreo: " + CorreoElectronico+
+                "\nDepartamento: " + departamento
+                +"\n";
+    }
     
     
 
@@ -96,7 +105,7 @@ public class Secretaria {
      * @return boolean
      */
     public boolean RegistrarPasajero(Pasajero entrada) {
-        return implementacion.miControlador.getMiTec().RegistrarPasajero(entrada);
+        return main.miControlador.getMiTec().RegistrarPasajero(entrada);
     }
 
     /*----------Solicitar Viaje----------*/
@@ -108,7 +117,7 @@ public class Secretaria {
      * @return boolean
      */
     public boolean SolicitarViaje(Viaje entrada) {
-        return implementacion.miControlador.getMiTec().SolicitarViaje(entrada);
+        return main.miControlador.getMiTec().SolicitarViaje(entrada);
     }
 
     /*----------Listar Solicitudes de viaje----------*/
@@ -123,7 +132,7 @@ public class Secretaria {
      */
     public String ListarSolicitudesViaje(Secretaria entradaSecretaria,
             int tipoBusqueda, String Busqueda) {
-        return implementacion.miControlador.getMiTec().ListarSolicitudesViaje(
+        return main.miControlador.getMiTec().ListarSolicitudesViaje(
                 entradaSecretaria, tipoBusqueda, Busqueda);
     }
 
@@ -136,7 +145,7 @@ public class Secretaria {
      * @return String
      */
     public String ConsultarDetalleDeUnaSolicitud(String consecutivo) {
-        return implementacion.miControlador.getMiTec().
+        return main.miControlador.getMiTec().
                 ConsultarDetalleDeUnaSolicitud(consecutivo);
     }
 
@@ -149,7 +158,7 @@ public class Secretaria {
      * @return
      */
     public boolean CancelarSolicitudViaje(String consecutivo) {
-        return implementacion.miControlador.getMiTec().
+        return main.miControlador.getMiTec().
                 CancelarSolicitudViaje(consecutivo);
     }
     

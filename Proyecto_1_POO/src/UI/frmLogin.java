@@ -141,14 +141,14 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnIngresarSecretariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarSecretariaActionPerformed
         String usuario = jtfSecreUsuario.getText();
-        String password = jtfSecreUsuario.getText();
+        String password = jpfSecreContrasenia.getText();
         
-        if(implementacion.miControlador.ValidarUsuarioSecretaria(usuario, 
+        if(main.miControlador.ValidarUsuarioSecretaria(usuario, 
                 password)){
             System.out.println("Usuario Aceptado");
-            Secretaria temp = implementacion.miControlador.
+            Secretaria temp = main.miControlador.
                     CargarSecretaria(usuario);
-            implementacion.miControlador.CargarVentanaSecretaria(temp);
+            main.miControlador.CargarVentanaSecretaria(temp);
         
         }else{
             JOptionPane.showMessageDialog(null, "Usuario no encontrado",

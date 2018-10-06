@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <tec>
     <secretarias>
+        <correoElectronico>qwerty@dominio.com</correoElectronico>
+        <departamento>Computacion</departamento>
+        <nombreCompleto>qwerty</nombreCompleto>
+        <nombreUsuario>a</nombreUsuario>
+        <password>PmHpB696$</password>
+        <telefono>22222222</telefono>
+    </secretarias>
+    <secretarias>
+        <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
+        <departamento>Computacion</departamento>
+        <nombreCompleto>SSDesth</nombreCompleto>
         <nombreUsuario>q</nombreUsuario>
         <password>q</password>
-        <telefono>0</telefono>
+        <telefono>72907236</telefono>
     </secretarias>
     <usuarios>
         <cedula>1</cedula>
@@ -28,9 +39,36 @@
     </usuarios>
     <viajes>
         <consecutivo>IVA-0</consecutivo>
+        <destino>Cartucho</destino>
         <estado>Confeccion</estado>
         <fechaFinalizacion>2018-11-11T00:00:00-06:00</fechaFinalizacion>
         <fechaInicio>2018-11-11T00:00:00-06:00</fechaInicio>
+        <fechaSolicitud>2018-10-06T00:00:00-06:00</fechaSolicitud>
+        <kilometrajeFinal>0.0</kilometrajeFinal>
+        <kilometrajeInicial>0.0</kilometrajeInicial>
+        <pasajeros>
+            <cedula>2</cedula>
+            <correoElectronico>2</correoElectronico>
+            <direccion>2</direccion>
+            <nombreCompleto>2</nombreCompleto>
+            <telefono>2</telefono>
+        </pasajeros>
+        <puntoSalida>Chepe</puntoSalida>
+        <solicitante>
+            <correoElectronico>qwerty@dominio.com</correoElectronico>
+            <departamento>Computacion</departamento>
+            <nombreCompleto>qwerty</nombreCompleto>
+            <nombreUsuario>a</nombreUsuario>
+            <password>PmHpB696$</password>
+            <telefono>22222222</telefono>
+        </solicitante>
+    </viajes>
+    <viajes>
+        <consecutivo>IVA-1</consecutivo>
+        <destino>Chepe</destino>
+        <estado>Cancelado</estado>
+        <fechaFinalizacion>2018-12-14T00:00:00-06:00</fechaFinalizacion>
+        <fechaInicio>2018-12-13T00:00:00-06:00</fechaInicio>
         <fechaSolicitud>2018-10-06T00:00:00-06:00</fechaSolicitud>
         <kilometrajeFinal>0.0</kilometrajeFinal>
         <kilometrajeInicial>0.0</kilometrajeInicial>
@@ -41,6 +79,80 @@
             <nombreCompleto>1</nombreCompleto>
             <telefono>1</telefono>
         </pasajeros>
-        <puntoSalida>chepe</puntoSalida>
+        <pasajeros>
+            <cedula>3</cedula>
+            <correoElectronico>3</correoElectronico>
+            <direccion>3</direccion>
+            <nombreCompleto>3</nombreCompleto>
+            <telefono>3</telefono>
+        </pasajeros>
+        <puntoSalida>Chepe</puntoSalida>
+        <solicitante>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
+            <departamento>Computacion</departamento>
+            <nombreCompleto>SSDesth</nombreCompleto>
+            <nombreUsuario>q</nombreUsuario>
+            <password>q</password>
+            <telefono>72907236</telefono>
+        </solicitante>
+    </viajes>
+    <viajes>
+        <consecutivo>IVA-2</consecutivo>
+        <destino>chepe</destino>
+        <estado>Confeccion</estado>
+        <fechaFinalizacion>2019-01-04T00:00:00-06:00</fechaFinalizacion>
+        <fechaInicio>2019-01-04T00:00:00-06:00</fechaInicio>
+        <fechaSolicitud>2018-10-06T00:00:00-06:00</fechaSolicitud>
+        <kilometrajeFinal>0.0</kilometrajeFinal>
+        <kilometrajeInicial>0.0</kilometrajeInicial>
+        <pasajeros>
+            <cedula>1</cedula>
+            <correoElectronico>1</correoElectronico>
+            <direccion>1</direccion>
+            <nombreCompleto>1</nombreCompleto>
+            <telefono>1</telefono>
+        </pasajeros>
+        <puntoSalida>Cartago</puntoSalida>
+        <solicitante>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
+            <departamento>Computacion</departamento>
+            <nombreCompleto>SSDesth</nombreCompleto>
+            <nombreUsuario>q</nombreUsuario>
+            <password>q</password>
+            <telefono>72907236</telefono>
+        </solicitante>
+    </viajes>
+    <viajes>
+        <consecutivo>IVA-3</consecutivo>
+        <destino>Chepe</destino>
+        <estado>Confeccion</estado>
+        <fechaFinalizacion>2019-11-11T00:00:00-06:00</fechaFinalizacion>
+        <fechaInicio>2019-11-11T00:00:00-06:00</fechaInicio>
+        <fechaSolicitud>2018-10-06T00:00:00-06:00</fechaSolicitud>
+        <kilometrajeFinal>0.0</kilometrajeFinal>
+        <kilometrajeInicial>0.0</kilometrajeInicial>
+        <pasajeros>
+            <cedula>1</cedula>
+            <correoElectronico>1</correoElectronico>
+            <direccion>1</direccion>
+            <nombreCompleto>1</nombreCompleto>
+            <telefono>1</telefono>
+        </pasajeros>
+        <pasajeros>
+            <cedula>3</cedula>
+            <correoElectronico>3</correoElectronico>
+            <direccion>3</direccion>
+            <nombreCompleto>3</nombreCompleto>
+            <telefono>3</telefono>
+        </pasajeros>
+        <puntoSalida>cartaguito Campeon</puntoSalida>
+        <solicitante>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
+            <departamento>Computacion</departamento>
+            <nombreCompleto>SSDesth</nombreCompleto>
+            <nombreUsuario>q</nombreUsuario>
+            <password>q</password>
+            <telefono>72907236</telefono>
+        </solicitante>
     </viajes>
 </tec>

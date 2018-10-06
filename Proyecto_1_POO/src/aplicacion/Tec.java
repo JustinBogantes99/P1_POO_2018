@@ -161,7 +161,7 @@ public class Tec {
     public boolean RegistrarPasajero(Pasajero entrada) {
         if (ValidarPasajero(entrada)) {
             Usuarios.add(entrada);
-            implementacion.miControlador.CrearXML();
+            main.miControlador.CrearXML();
             return true;
         }
         return false;
@@ -199,7 +199,7 @@ public class Tec {
     public boolean SolicitarViaje(Viaje entrada) {
         if (VaidarViaje(entrada)) {
             viajes.add(entrada);
-            implementacion.miControlador.CrearXML();
+            main.miControlador.CrearXML();
             return true;
         }
         System.out.println("AquiNo agrego");
@@ -276,14 +276,18 @@ public class Tec {
         */
         if ((fechaInicioViajeNuevo.after(fechaInicioViajeExistente)||
                 fechaInicioViajeNuevo.equals(fechaInicioViajeExistente))
-                ||(fechaInicioViajeNuevo.before(fechaFinViajeExistente)
+                &&(fechaInicioViajeNuevo.before(fechaFinViajeExistente)
                 ||fechaInicioViajeNuevo.equals(fechaFinViajeExistente))) {
+            System.out.println((fechaInicioViajeNuevo.after(fechaInicioViajeExistente)||
+                fechaInicioViajeNuevo.equals(fechaInicioViajeExistente)));
+            System.out.println((fechaInicioViajeNuevo.before(fechaFinViajeExistente)
+                ||fechaInicioViajeNuevo.equals(fechaFinViajeExistente)));
             return true;
         }
         
         if ((fechaFinViajeNuevo.after(fechaInicioViajeExistente)||
                 fechaFinViajeNuevo.equals(fechaInicioViajeExistente))
-                ||(fechaFinViajeNuevo.before(fechaFinViajeExistente)
+                &&(fechaFinViajeNuevo.before(fechaFinViajeExistente)
                 ||fechaFinViajeNuevo.equals(fechaFinViajeExistente))) {
             return true;
         }
@@ -336,9 +340,11 @@ public class Tec {
         String salida = "";
         switch (tipoBusqueda) {
             case 0://Busqueda por Fecha(dd/MM/yyyy)
+                System.out.println("bandera case o");
                 salida = SolicitudesViajesPorFecha(viajesSolicitados, Busqueda);
                 break;
             case 1://Busqueda por Estado(Confeccion/Aprobado/Cancelado/No Aprobado)
+                
                 salida = SolicitudesViajesPorEstado(viajesSolicitados, Busqueda);
                 break;
             case 2://Busqueda por Destino
@@ -358,6 +364,7 @@ public class Tec {
     public List<Viaje> BusquedaSolicitudesViajesUsuario(Secretaria entrada) {
         List<Viaje> salida = new ArrayList();
         for (Viaje temporal : viajes) {
+            
             if (temporal.getSolicitante().getNombreUsuario().equals(
                     entrada.getNombreUsuario())) {
                 salida.add(temporal);
@@ -387,6 +394,9 @@ public class Tec {
             }
         } catch (Exception e) {
             System.out.println("Error");
+            JOptionPane.showMessageDialog(null,"La fecha No cumple\n"
+                    + "con el Formato","Alerta",2);
+            
         }
         return acumulador;
     }
@@ -423,7 +433,9 @@ public class Tec {
     public String SolicitudesViajesPorDestino(List<Viaje> listaSolicitudes,
             String destino) {
         String acumulador = "";
+        System.out.println("Bandera 3");
         for (Viaje temporal : listaSolicitudes) {
+            System.out.println("Destino: "+temporal.getDestino());
             if (temporal.getDestino().equals(destino)) {
                 acumulador += temporal.ImprimidorlistarSolicitudes();
             }
@@ -463,10 +475,11 @@ public class Tec {
             if (temporal.getConsecutivo().equals(consecutivo)) {
                 if (temporal.getEstado().equals("Aprobado")) {
                     /*Aque irian el metodo de enviar mensaje a los interesados*/
+                    
                 }
 
                 temporal.setEstado("Cancelado");
-
+                main.miControlador.CrearXML();
                 return true;
             }
         }
@@ -750,13 +763,13 @@ public class Tec {
         
         if ((fechaInicioViajeNuevo.after(fechaInicioViajeExistente)||
                 fechaInicioViajeNuevo.equals(fechaInicioViajeExistente))
-                ||(fechaInicioViajeNuevo.before(fechaFinViajeExistente)
+                &&(fechaInicioViajeNuevo.before(fechaFinViajeExistente)
                 ||fechaInicioViajeNuevo.equals(fechaFinViajeExistente))) {
             return true;
         }
         if ((fechaFinViajeNuevo.after(fechaInicioViajeExistente)||
                 fechaFinViajeNuevo.equals(fechaInicioViajeExistente))
-                ||(fechaFinViajeNuevo.before(fechaFinViajeExistente)
+                &&(fechaFinViajeNuevo.before(fechaFinViajeExistente)
                 ||fechaFinViajeNuevo.equals(fechaFinViajeExistente))){
             return true;
         }
@@ -814,6 +827,8 @@ public class Tec {
     public boolean ValidarUsuarioSecretaria(String usuario, String password) {
         for (Secretaria temp : secretarias) {
             if (temp.getNombreUsuario().equals(usuario)) {
+                System.out.println(temp.getPassword());
+                System.out.println(password);
                 if (temp.getPassword().equals(password)) {
                     return true;
                 } else {

@@ -80,6 +80,7 @@ public class Pasajero {
          acum += "\nDireccion: " + direccion; 
          acum += "\nCorreo: " + correoElectronico; 
          acum += "\nTelefono: " + telefono; 
+         acum += "\n"; 
          return acum;
     }
     

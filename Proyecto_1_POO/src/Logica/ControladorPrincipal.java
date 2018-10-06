@@ -57,13 +57,22 @@ public class ControladorPrincipal {
     public void IniciarPrograma(){
         /*Cargar XML*/
         leerXML("src/XML/Datos.xml");
+        CargarVentanaloggin();
+    
+    }
+    public void CargarVentanaloggin(){
+
         miVentanaLogeo= new frmLogin();
         miVentanaLogeo.CargadorVentana();
         miVentanaLogeo.setVisible(true);
     
     }
+    /**
+     * 
+     * @param entrada 
+     */
     public void CargarVentanaSecretaria(Secretaria entrada){
-
+        miVentanaLogeo.dispose(); 
         miVentanaSecretaria = new frmSecretaria();
         miVentanaSecretaria.CargadorVentana(entrada);
         miVentanaSecretaria.setVisible(true);
@@ -98,10 +107,22 @@ public class ControladorPrincipal {
         return  miTec.ValidarUsuarioSecretaria(usuario, password);
     }
     
+    /**
+     * este metodo Carga una secretaria para su uso en 
+     * el frm Secretaria
+     * 
+     * @param usuario:String
+     * @return Secretaria
+     */
     public Secretaria CargarSecretaria(String usuario){
         return miTec.CargarSecretaria(usuario);
     }
     
+    /**
+     * este metodo obtiene los pasajeros que existen
+     * dentro del programa
+     * @return List
+     */
     public List<Pasajero> ObtenerListaUsuarios(){
         return miTec.getUsuarios();
     }
@@ -110,6 +131,10 @@ public class ControladorPrincipal {
     
     
     /*----------lectura y escritura Archivos----------*/
+    /**
+     * Este metodo genera un xml con los datos del programa
+     * @param URL:String
+     */
     public void leerXML(String URL) {
         try {
             //--------Crea el contexto JAXB--------//
@@ -123,7 +148,9 @@ public class ControladorPrincipal {
             System.out.println(ex.toString());
         }
     }
-    
+    /**
+     * Este metodo lee un xml con los datos del programa
+     */
     public void CrearXML(){
         //Contexto de JAXB
         try{

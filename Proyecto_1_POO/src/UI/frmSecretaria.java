@@ -8,7 +8,7 @@ package UI;
 import aplicacion.Pasajero;
 import aplicacion.Secretaria;
 import aplicacion.Viaje;
-import aplicacion.implementacion;
+import aplicacion.main;
 import java.awt.Image;
 import java.text.*;
 import javax.swing.*;
@@ -39,6 +39,7 @@ public class frmSecretaria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jpRegistrarPasajero = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,6 +54,7 @@ public class frmSecretaria extends javax.swing.JFrame {
         jtfRegistrarTelefono = new javax.swing.JTextField();
         btnRegistrarPasajero = new javax.swing.JButton();
         lblRegistrarMensaje = new javax.swing.JLabel();
+        btnAtras1 = new javax.swing.JButton();
         lblFondoRegistrar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -71,9 +73,43 @@ public class frmSecretaria extends javax.swing.JFrame {
         btnSolicitarAgregarPasajero = new javax.swing.JButton();
         btnSolicitarQuitarPasajero = new javax.swing.JButton();
         btnSolicitarViaje = new javax.swing.JButton();
+        jtfSolicitarDestino = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        lblFondoSolicitar = new javax.swing.JLabel();
+        btnAtras2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtaListarSolicitudes = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jtfListarFecha = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jtfListarLugar = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jcbEstado = new javax.swing.JComboBox<>();
+        btnListarFechas = new javax.swing.JButton();
+        btnListarEstado = new javax.swing.JButton();
+        btnListarLugar = new javax.swing.JButton();
+        lblListamiento = new javax.swing.JLabel();
+        lblFondoListar = new javax.swing.JLabel();
+        btnAtras3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtaConsultar = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        jtfConsultarID = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        lblConsultar = new javax.swing.JLabel();
+        lblFondoConsultar = new javax.swing.JLabel();
+        btnAtras4 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jtfCancelarID = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnAtras5 = new javax.swing.JButton();
+        lblFondoCancelar = new javax.swing.JLabel();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 600));
@@ -118,41 +154,63 @@ public class frmSecretaria extends javax.swing.JFrame {
         lblRegistrarMensaje.setForeground(new java.awt.Color(255, 255, 255));
         lblRegistrarMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jpRegistrarPasajero.add(lblRegistrarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 290, 60));
+
+        btnAtras1.setText("Atras");
+        btnAtras1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtras1ActionPerformed(evt);
+            }
+        });
+        jpRegistrarPasajero.add(btnAtras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
         jpRegistrarPasajero.add(lblFondoRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -8, 710, 290));
 
         jTabbedPane1.addTab("Registrar Pasajero", jpRegistrarPasajero);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Punto de Salida:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha Inicio:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Fecha Finalizacion:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         lblCantPasajeros.setForeground(new java.awt.Color(255, 255, 255));
         lblCantPasajeros.setText("Cant. Pasajeros: 0");
+        jPanel2.add(lblCantPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jPanel2.add(jtfSolicitarPunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 190, -1));
+        jPanel2.add(jtfSolicitarFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 190, -1));
+        jPanel2.add(jtfSolicitarFechaFinalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 190, -1));
 
         jLabel10.setBackground(new java.awt.Color(204, 204, 204));
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Formato: dd-MM-aaaa");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(204, 204, 204));
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Formato: dd-MM-aaaa");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
 
         jcbPasajeros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jcbPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 142, -1));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Agregar Pasajero:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Quitar Pasajero:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
 
         jcbSolicitarQuitarPasajeros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jcbSolicitarQuitarPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 142, -1));
 
         btnSolicitarAgregarPasajero.setText("Agregar");
         btnSolicitarAgregarPasajero.addActionListener(new java.awt.event.ActionListener() {
@@ -160,8 +218,15 @@ public class frmSecretaria extends javax.swing.JFrame {
                 btnSolicitarAgregarPasajeroActionPerformed(evt);
             }
         });
+        jPanel2.add(btnSolicitarAgregarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 142, -1));
 
         btnSolicitarQuitarPasajero.setText("Quitar");
+        btnSolicitarQuitarPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarQuitarPasajeroActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSolicitarQuitarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 142, -1));
 
         btnSolicitarViaje.setText("Solicitar Viaje");
         btnSolicitarViaje.addActionListener(new java.awt.event.ActionListener() {
@@ -169,120 +234,158 @@ public class frmSecretaria extends javax.swing.JFrame {
                 btnSolicitarViajeActionPerformed(evt);
             }
         });
+        jPanel2.add(btnSolicitarViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 150, -1));
+        jPanel2.add(jtfSolicitarDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 190, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfSolicitarFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfSolicitarFechaFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jtfSolicitarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCantPasajeros)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel12)
-                                .addComponent(jcbPasajeros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSolicitarAgregarPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jcbSolicitarQuitarPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnSolicitarQuitarPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(btnSolicitarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(137, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jtfSolicitarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jtfSolicitarFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jtfSolicitarFechaFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblCantPasajeros)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbSolicitarQuitarPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSolicitarAgregarPasajero)
-                    .addComponent(btnSolicitarQuitarPasajero)
-                    .addComponent(btnSolicitarViaje))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Destino");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel2.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -10, 700, 300));
+
+        btnAtras2.setText("Atras");
+        btnAtras2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtras2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAtras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
 
         jTabbedPane1.addTab("Solicitar Viaje", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 669, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
-        );
+        jPanel3.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jtaListarSolicitudes.setEditable(false);
+        jtaListarSolicitudes.setColumns(20);
+        jtaListarSolicitudes.setRows(5);
+        jScrollPane1.setViewportView(jtaListarSolicitudes);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 59, 256, 203));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Tipos de Listamiento de Solicitudes");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 11, 219, 39));
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Fecha Solicitud:");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 63, -1, -1));
+        jPanel3.add(jtfListarFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 60, 107, -1));
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Estado:");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 104, -1, -1));
+        jPanel3.add(jtfListarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 142, 107, -1));
+
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Lugar de Destino:");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 145, -1, -1));
+
+        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 101, 107, -1));
+
+        btnListarFechas.setText("Buscar");
+        btnListarFechas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarFechasActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnListarFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(541, 59, 118, -1));
+
+        btnListarEstado.setText("Buscar");
+        btnListarEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarEstadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnListarEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(541, 100, 118, -1));
+
+        btnListarLugar.setText("Buscar");
+        btnListarLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarLugarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnListarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(541, 141, 118, -1));
+
+        lblListamiento.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblListamiento.setForeground(new java.awt.Color(255, 255, 255));
+        lblListamiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(lblListamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, 256, 39));
+        jPanel3.add(lblFondoListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -6, 720, 300));
+
+        btnAtras3.setText("Atras");
+        btnAtras3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtras3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnAtras3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
 
         jTabbedPane1.addTab("Listar Solicitudes", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 669, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
-        );
+        jPanel4.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jtaConsultar.setEditable(false);
+        jtaConsultar.setColumns(20);
+        jtaConsultar.setRows(5);
+        jScrollPane2.setViewportView(jtaConsultar);
+
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, 256, 165));
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("IVA-");
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 78, 40, -1));
+        jPanel4.add(jtfConsultarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 75, 116, -1));
+
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 113, -1, -1));
+
+        lblConsultar.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        lblConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        lblConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(lblConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 256, 46));
+        jPanel4.add(lblFondoConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 710, 310));
+
+        btnAtras4.setText("Atras");
+        btnAtras4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtras4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnAtras4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
 
         jTabbedPane1.addTab("Consultar Solicitud", jPanel4);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 669, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
-        );
+        jPanel5.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.add(jtfCancelarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 84, 118, -1));
+
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("IVA-");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 87, 44, -1));
+
+        btnCancelar.setText("Cancelar Viaje");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 141, 180, -1));
+
+        btnAtras5.setText("Atras");
+        btnAtras5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtras5ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnAtras5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
+        jPanel5.add(lblFondoCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -6, 710, 300));
 
         jTabbedPane1.addTab("Cancelar Solicitud", jPanel5);
 
@@ -334,7 +437,7 @@ public class frmSecretaria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarPasajeroActionPerformed
 
     private void btnSolicitarAgregarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarAgregarPasajeroActionPerformed
-        Pasajero temporal = implementacion.miControlador.getMiTec().
+        Pasajero temporal = main.miControlador.getMiTec().
                 getUsuarios().get(jcbPasajeros.getSelectedIndex());
         if (ValidadorSolicitarPasajero(temporal)) {
             listaPasajerosViaje.add(temporal);
@@ -358,6 +461,7 @@ public class frmSecretaria extends javax.swing.JFrame {
             fechaActrual = traductor.parse(traductor.format(fechaActrual));
 
             nuevoViaje.setPuntoSalida(jtfSolicitarPunto.getText());
+            nuevoViaje.setDestino(jtfSolicitarDestino.getText());
             fechatemp = traductor.parse(jtfSolicitarFechaInicio.getText());
             nuevoViaje.setFechaInicio(fechatemp);
             fechatemp = traductor.parse(jtfSolicitarFechaFinalizacion.getText());
@@ -367,8 +471,9 @@ public class frmSecretaria extends javax.swing.JFrame {
 
             nuevoViaje.setPasajeros(listaPasajerosViaje);
 
-            nuevoViaje.setConsecutivo("IVA-" + implementacion.miControlador.getMiTec().getViajes().size());
-
+            nuevoViaje.setConsecutivo("IVA-" + main.miControlador.getMiTec().getViajes().size());
+            nuevoViaje.setSolicitante(usuarioActual);
+            
             if (usuarioActual.SolicitarViaje(nuevoViaje)) {
                 JOptionPane.showMessageDialog(null, "Viaje Agregado");
                 LimpiarCamposSolicitarViaje();
@@ -388,6 +493,93 @@ public class frmSecretaria extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btnSolicitarViajeActionPerformed
+
+    private void btnSolicitarQuitarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarQuitarPasajeroActionPerformed
+        if (listaPasajerosViaje.size()!=0){
+            listaPasajerosViaje.remove(jcbSolicitarQuitarPasajeros.getSelectedIndex());
+            CargadorSolicitarPasajerosAgregados();
+        }
+    }//GEN-LAST:event_btnSolicitarQuitarPasajeroActionPerformed
+
+    private void btnListarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarFechasActionPerformed
+       String Busqueda=usuarioActual.ListarSolicitudesViaje
+        (usuarioActual, 0,jtfListarFecha.getText());
+       
+       lblListamiento.setText("Listar por Fecha  Solicitud");
+       jtaListarSolicitudes.setText(Busqueda);
+        
+    }//GEN-LAST:event_btnListarFechasActionPerformed
+
+    private void btnListarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEstadoActionPerformed
+       String Busqueda=usuarioActual.ListarSolicitudesViaje
+        (usuarioActual, 1,jcbEstado.getItemAt(jcbEstado.getSelectedIndex()));
+       
+       lblListamiento.setText("Listar por Estado");
+       jtaListarSolicitudes.setText(Busqueda);
+    }//GEN-LAST:event_btnListarEstadoActionPerformed
+
+    private void btnListarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarLugarActionPerformed
+       String Busqueda=usuarioActual.ListarSolicitudesViaje
+        (usuarioActual, 2,jtfListarLugar.getText());
+       
+       lblListamiento.setText("Listar por Destino");
+       jtaListarSolicitudes.setText(Busqueda);
+    }//GEN-LAST:event_btnListarLugarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       String Busqueda= "IVA-"+jtfConsultarID.getText();
+        
+       String salida=usuarioActual.ConsultarDetalleDeUnaSolicitud(Busqueda);
+       if(salida.equals("")){
+           JOptionPane.showMessageDialog(null,"No se encontro ningun\n"
+                   + "viaje que coinvida con ese IVA","Alerta", 0);
+       }else{
+            lblConsultar.setText(Busqueda);
+            jtaConsultar.setText(salida);
+       }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        String solicitud="IVA-"+jtfCancelarID.getText();
+        
+        int seleccion = JOptionPane.showConfirmDialog(null, "esta Seguro que desea Cancelar:\n"
+                + "La solicitud: "+solicitud);
+        if(seleccion==0){
+            if(usuarioActual.CancelarSolicitudViaje(solicitud)){
+                JOptionPane.showMessageDialog(null, "Solicitud: "+solicitud+
+                     "Fue borrada exitosamente",
+                     "Alerta", 1);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAtras5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras5ActionPerformed
+        main.miControlador.CargarVentanaloggin();
+        this.dispose();
+    }//GEN-LAST:event_btnAtras5ActionPerformed
+
+    private void btnAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras1ActionPerformed
+         main.miControlador.CargarVentanaloggin();
+         this.dispose();
+    }//GEN-LAST:event_btnAtras1ActionPerformed
+
+    private void btnAtras2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras2ActionPerformed
+        main.miControlador.CargarVentanaloggin();
+        this.dispose();
+    }//GEN-LAST:event_btnAtras2ActionPerformed
+
+    private void btnAtras3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras3ActionPerformed
+         main.miControlador.CargarVentanaloggin();
+         this.dispose();
+    }//GEN-LAST:event_btnAtras3ActionPerformed
+
+    private void btnAtras4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras4ActionPerformed
+        main.miControlador.CargarVentanaloggin();
+        this.dispose();
+    }//GEN-LAST:event_btnAtras4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,20 +617,30 @@ public class frmSecretaria extends javax.swing.JFrame {
     }
 
     public void CargadorVentana(Secretaria entrada) {
-        this.setTitle("Loggin");
+        this.setTitle("Secretaria");
 
         ImageIcon imagen = new ImageIcon("src/Multimedia/FondoSecretaria.png");
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(700,
                 400, Image.SCALE_DEFAULT));
         lblFondoRegistrar.setIcon(icono);
+        lblFondoSolicitar.setIcon(icono);
+        lblFondoListar.setIcon(icono);
+        lblFondoConsultar.setIcon(icono);
+        lblFondoCancelar.setIcon(icono);
 
         usuarioActual = entrada;
         CargadorPasajeros();
         CargadorSolicitarPasajerosAgregados();
+        
+        jcbEstado.removeAllItems();
+        jcbEstado.addItem("Confeccion");
+        jcbEstado.addItem("Aprobado");
+        jcbEstado.addItem("Cancelado");
+        jcbEstado.addItem("No Aprobado");
     }
 
     public void CargadorPasajeros() {
-        List<Pasajero> temp = implementacion.miControlador.ObtenerListaUsuarios();
+        List<Pasajero> temp = main.miControlador.ObtenerListaUsuarios();
         jcbPasajeros.removeAllItems();
         for (Pasajero auxiliar : temp) {
             jcbPasajeros.addItem(auxiliar.getNombreCompleto());
@@ -515,21 +717,39 @@ public class frmSecretaria extends javax.swing.JFrame {
     public void LimpiarCamposSolicitarViaje() {
        jtfSolicitarPunto.setText("");
        jtfSolicitarFechaInicio.setText("");
+       jtfSolicitarDestino.setText("");
        jtfSolicitarFechaFinalizacion.setText("");
        listaPasajerosViaje= new ArrayList();
        CargadorSolicitarPasajerosAgregados();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras1;
+    private javax.swing.JButton btnAtras2;
+    private javax.swing.JButton btnAtras3;
+    private javax.swing.JButton btnAtras4;
+    private javax.swing.JButton btnAtras5;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnListarEstado;
+    private javax.swing.JButton btnListarFechas;
+    private javax.swing.JButton btnListarLugar;
     private javax.swing.JButton btnRegistrarPasajero;
     private javax.swing.JButton btnSolicitarAgregarPasajero;
     private javax.swing.JButton btnSolicitarQuitarPasajero;
     private javax.swing.JButton btnSolicitarViaje;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -537,24 +757,41 @@ public class frmSecretaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JComboBox<String> jcbPasajeros;
     private javax.swing.JComboBox<String> jcbSolicitarQuitarPasajeros;
     private javax.swing.JPanel jpRegistrarPasajero;
+    private javax.swing.JTextArea jtaConsultar;
+    private javax.swing.JTextArea jtaListarSolicitudes;
+    private javax.swing.JTextField jtfCancelarID;
+    private javax.swing.JTextField jtfConsultarID;
+    private javax.swing.JTextField jtfListarFecha;
+    private javax.swing.JTextField jtfListarLugar;
     private javax.swing.JTextField jtfRegistrarCedula;
     private javax.swing.JTextField jtfRegistrarCorreo;
     private javax.swing.JTextField jtfRegistrarDireccion;
     private javax.swing.JTextField jtfRegistrarNombre;
     private javax.swing.JTextField jtfRegistrarTelefono;
+    private javax.swing.JTextField jtfSolicitarDestino;
     private javax.swing.JTextField jtfSolicitarFechaFinalizacion;
     private javax.swing.JTextField jtfSolicitarFechaInicio;
     private javax.swing.JTextField jtfSolicitarPunto;
     private javax.swing.JLabel lblCantPasajeros;
+    private javax.swing.JLabel lblConsultar;
+    private javax.swing.JLabel lblFondoCancelar;
+    private javax.swing.JLabel lblFondoConsultar;
+    private javax.swing.JLabel lblFondoListar;
     private javax.swing.JLabel lblFondoRegistrar;
+    private javax.swing.JLabel lblFondoSolicitar;
+    private javax.swing.JLabel lblListamiento;
     private javax.swing.JLabel lblRegistrarMensaje;
     // End of variables declaration//GEN-END:variables
 }
