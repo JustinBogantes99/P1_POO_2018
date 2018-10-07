@@ -3,8 +3,8 @@
     <administradores>
         <departamento>Computacion</departamento>
         <nombreCompleto>SSDesth</nombreCompleto>
-        <nombreUsuario>q</nombreUsuario>
-        <password>q</password>
+        <nombreUsuario>administrador</nombreUsuario>
+        <password>1234Admin!</password>
         <telefono>72907236</telefono>
     </administradores>
     <choferes>
