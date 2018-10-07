@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion;
 
 import java.util.Random;
 import javax.xml.bind.annotation.XmlType;
-
 /**
  *
- * @author Carlos Andres Montero
- * @author Justin
+ * @author Justin Bogantes  & Manuel Arias & Carlos Montero
  */
 @XmlType()
 public class Secretaria {
     //----------Variables de la Clase----------//
-    
     private String nombreCompleto;
     private String departamento;
     /*El nombre del usuario corresponde al nombre 

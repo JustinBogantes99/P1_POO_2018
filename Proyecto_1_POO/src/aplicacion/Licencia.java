@@ -1,18 +1,21 @@
 package aplicacion;
 
 import javax.xml.bind.annotation.XmlType;
-
 /**
  *
- * @author Justin
+ * @author Justin Bogantes  & Manuel Arias & Carlos Montero
  */
 @XmlType()
 public class Licencia {
+    //----------Variables de la Clase----------//
     private int numero;
     private String fechaEmision;
     private String tipo;
     private String fechaExpiracion;
-
+     //----------Contructor(es)----------//
+    /**
+     * Contructor default de la clase
+     */
     public Licencia() {
     }
 

@@ -1,19 +1,19 @@
 package aplicacion;
 
 import javax.xml.bind.annotation.XmlType;
-
 /**
  *
- * @author Justin
+ * @author Justin Bogantes  & Manuel Arias & Carlos Montero
  */
 @XmlType()
 public class Empresa {
+    //----------Variables de la Clase----------//
     
     private String razonSocial;
     private int numeroCedulaJuridica;
     private int telefono;
     private String dirrecion;
-
+    
     public Empresa(String razonSocial, int numeroCedulaJuridica, int telefono, String dirrecion) {
         this.razonSocial = razonSocial;
         this.numeroCedulaJuridica = numeroCedulaJuridica;

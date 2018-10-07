@@ -1,14 +1,13 @@
 package aplicacion;
 
 import javax.xml.bind.annotation.XmlType;
-
 /**
  *
- * @author Justin
+ * @author Justin Bogantes  & Manuel Arias & Carlos Montero
  */
 @XmlType()
 public class Pasajero {
-    
+    //----------Variables de la Clase----------//
     private String nombreCompleto;
     private int cedula;
     private String direccion;

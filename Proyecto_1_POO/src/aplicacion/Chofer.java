@@ -1,16 +1,14 @@
 package aplicacion;
-//import java.util.Scanner;
-
 import java.util.*;
 import javax.xml.bind.annotation.XmlType;
-
 /**
  *
- * @author Justin
+ * @author Justin Bogantes  & Manuel Arias & Carlos Montero
  */
 @XmlType()
 public class Chofer {
-
+    //----------Variables de la Clase----------//
+    
     private String nombreCompleto;
     private int telefono;
     private String correo;

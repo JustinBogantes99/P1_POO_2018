@@ -3,7 +3,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlType;
 /**
  *
- * @author Justin
+ * @author Justin Bogantes  & Manuel Arias & Carlos Montero
  */
 @XmlType()
 public class Mantenimiento {
@@ -15,7 +15,10 @@ public class Mantenimiento {
     private double montoPagado;
     private String detalleActividad;
     private Empresa empresa;
-
+     //----------Contructor(es)----------//
+    /**
+     * @param Tipo , fechaInicio , fechaFinalizacion , montoPagado , detalleActividad , Empresa
+     */
     public Mantenimiento(String Tipo, Date fechaInicio, Date fechaFinalizacion, double montoPagado, String detalleActividad, Empresa empresa) {
         this.Tipo = Tipo;
         this.fechaInicio = fechaInicio;
@@ -37,7 +40,7 @@ public class Mantenimiento {
     public static int getIdentificiador() {
         return identificiador;
     }
-
+    
     public static void setIdentificiador(int identificiador) {
         Mantenimiento.identificiador = identificiador;
     }
