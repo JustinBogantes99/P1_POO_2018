@@ -1,5 +1,6 @@
 package aplicacion;
 
+import email.EnviarCorreoAdjunto;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.xml.bind.annotation.XmlType;
@@ -215,5 +216,38 @@ public class Viaje {
 
         return acum;
     }
+     public String SalidaPDFViajeAprovado() {
+        SimpleDateFormat traductor = new SimpleDateFormat("dd-MM-yyyy");
+        String acum = "Aprovada Solicitud de viaje: "+consecutivo;
+        acum += "\nChofer: " + choferAsignado.getNombreCompleto()+
+                " | " + choferAsignado.getTelefono();
+        acum += "\nSalida: " + puntoSalida;
+        acum += "\nFecha de Salida: " + traductor.format(fechaSolicitud);
+        acum += "\nLista De Pasajeros:\n";
+       
+        for(Pasajero temporal:pasajeros){
+            acum += temporal.SalidaPDF();
+            acum+="\n";
+        
+        }
 
+        return acum;
+    }
+
+    public void EnviarCorreoAprovacion(){
+        EnviarCorreoAdjunto generador = new EnviarCorreoAdjunto();
+        //Enviar correo al chofer
+        generador.EnviarCorreo(choferAsignado.getCorreo(),
+                "Aprobacion de Solicitud De Viaje");
+        //Enviar Correo Solicitante
+        generador.EnviarCorreo(solicitante.getCorreoElectronico(),
+                "Aprobacion de Solicitud De Viaje");
+        //Enviar Correo Pasajeros
+        for(Pasajero temp:pasajeros){
+            generador.EnviarCorreo(temp.getCorreoElectronico(),
+                    "Aprobacion de Solicitud De Viaje");
+        }
+        
+    }
+     
 }

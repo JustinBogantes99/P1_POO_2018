@@ -238,6 +238,15 @@ public class Secretaria {
        salida=Alfabeto.charAt(munero)+"";
        return salida;
     }
+    
+    public String SalidaPDF(){
+       String salida="Usuario Secretaria Creado\n";
+       salida += "Nombre: " + nombreCompleto +
+                "\nNombre Usuario: " + nombreUsuario+
+                "\nContaseña: " + password+
+                "\n " ;
+       return salida;
+    }
 
     //----------Fin de la clase----------//
 }

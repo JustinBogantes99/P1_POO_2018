@@ -1,5 +1,5 @@
 
-package proyecto1;
+package email;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -12,11 +12,14 @@ import java.io.FileOutputStream;
  * @author Manuel Arias Medina
  */
 public class CreadorPDF {
+
+    public CreadorPDF() {
+    }
     
-    public static void main(String args[]){
-        
-        String ruta = "C:\\Users\\manue\\Documents\\EjemploCreacionAutomatica";
-        String contenido = "Chofer: " + "\nNumero de telefono: " + "\n" + "\nLugar de partida: " + "\nFecha y hora: " + "\nViajeros: ";
+    
+    public void crearPDF(String contenido){    
+        String ruta = "src/XML/Correo";
+        //String contenido = "Chofere: " + "\nNumero de telefono: " + "\n" + "\nLugar de partida: " + "\nFecha y hora: " + "\nViajeros: ";
     
         try{
             FileOutputStream archivo = new FileOutputStream(ruta + ".pdf");

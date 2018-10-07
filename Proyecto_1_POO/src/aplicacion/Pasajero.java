@@ -84,6 +84,10 @@ public class Pasajero {
          return acum;
     }
     
+    public String SalidaPDF(){
+        return "Nombre: "+nombreCompleto+
+                " | Telefono"+telefono+"\n";
+    }
     
     
 }

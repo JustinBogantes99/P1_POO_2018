@@ -9,7 +9,7 @@
     </administradores>
     <choferes>
         <cedula>123456789</cedula>
-        <correo>Shumajer@cholferLoco.com</correo>
+        <correo>manuelariasmedina@outlook.com</correo>
         <licencias>
             <fechaEmision>06-06-2015</fechaEmision>
             <fechaExpiracion>12-12-2020</fechaExpiracion>
@@ -20,7 +20,7 @@
         <telefono>66666666</telefono>
     </choferes>
     <secretarias>
-        <correoElectronico>qwerty@dominio.com</correoElectronico>
+        <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
         <departamento>Computacion</departamento>
         <nombreCompleto>qwerty</nombreCompleto>
         <nombreUsuario>a</nombreUsuario>
@@ -35,9 +35,17 @@
         <password>MyUe580#</password>
         <telefono>2</telefono>
     </secretarias>
+    <secretarias>
+        <correoElectronico>carlosmontt1993@gmail.com</correoElectronico>
+        <departamento>Computacion</departamento>
+        <nombreCompleto>Solrac Oretnom</nombreCompleto>
+        <nombreUsuario>carlosmontt1993@gmail.com</nombreUsuario>
+        <password>VoCvVp839$</password>
+        <telefono>72907236</telefono>
+    </secretarias>
     <usuarios>
         <cedula>987654321</cedula>
-        <correoElectronico>dovahkiin@Skyrim.com</correoElectronico>
+        <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
         <direccion>Skyrim</direccion>
         <nombreCompleto>dovahkiin</nombreCompleto>
         <telefono>88008800</telefono>
@@ -54,9 +62,21 @@
         <sedePertenenciaVehículo>1</sedePertenenciaVehículo>
     </vehiculos>
     <viajes>
+        <choferAsignado>
+            <cedula>123456789</cedula>
+            <correo>manuelariasmedina@outlook.com</correo>
+            <licencias>
+                <fechaEmision>06-06-2015</fechaEmision>
+                <fechaExpiracion>12-12-2020</fechaExpiracion>
+                <numero>123456789</numero>
+                <tipo>B1</tipo>
+            </licencias>
+            <nombreCompleto>Shumajer</nombreCompleto>
+            <telefono>66666666</telefono>
+        </choferAsignado>
         <consecutivo>IVA-0</consecutivo>
         <destino>Chepe</destino>
-        <estado>Confeccion</estado>
+        <estado>Aprobado</estado>
         <fechaFinalizacion>2018-11-11T00:00:00-06:00</fechaFinalizacion>
         <fechaInicio>2018-11-11T00:00:00-06:00</fechaInicio>
         <fechaSolicitud>2018-10-07T00:00:00-06:00</fechaSolicitud>
@@ -64,20 +84,31 @@
         <kilometrajeInicial>0.0</kilometrajeInicial>
         <pasajeros>
             <cedula>987654321</cedula>
-            <correoElectronico>dovahkiin@Skyrim.com</correoElectronico>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
             <direccion>Skyrim</direccion>
             <nombreCompleto>dovahkiin</nombreCompleto>
             <telefono>88008800</telefono>
         </pasajeros>
         <puntoSalida>Cartago</puntoSalida>
         <solicitante>
-            <correoElectronico>qwerty@dominio.com</correoElectronico>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
             <departamento>Computacion</departamento>
             <nombreCompleto>qwerty</nombreCompleto>
             <nombreUsuario>a</nombreUsuario>
             <password>a</password>
             <telefono>22222222</telefono>
         </solicitante>
+        <vehiculoAsignado>
+            <anioFabricación>1</anioFabricación>
+            <capacidad>0</capacidad>
+            <color>1</color>
+            <estado>Servicio</estado>
+            <kilometraje>1.0</kilometraje>
+            <marca>1</marca>
+            <númeroVin>1</númeroVin>
+            <placa>1</placa>
+            <sedePertenenciaVehículo>1</sedePertenenciaVehículo>
+        </vehiculoAsignado>
     </viajes>
     <viajes>
         <consecutivo>IVA-1</consecutivo>
@@ -90,14 +121,14 @@
         <kilometrajeInicial>0.0</kilometrajeInicial>
         <pasajeros>
             <cedula>987654321</cedula>
-            <correoElectronico>dovahkiin@Skyrim.com</correoElectronico>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
             <direccion>Skyrim</direccion>
             <nombreCompleto>dovahkiin</nombreCompleto>
             <telefono>88008800</telefono>
         </pasajeros>
         <puntoSalida>HammerFell</puntoSalida>
         <solicitante>
-            <correoElectronico>qwerty@dominio.com</correoElectronico>
+            <correoElectronico>carlosmontt19@hotmail.com</correoElectronico>
             <departamento>Computacion</departamento>
             <nombreCompleto>qwerty</nombreCompleto>
             <nombreUsuario>a</nombreUsuario>
