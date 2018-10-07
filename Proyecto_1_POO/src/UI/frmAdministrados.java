@@ -438,7 +438,7 @@ public class frmAdministrados extends javax.swing.JFrame {
                 btnViajesPorEscuelasActionPerformed(evt);
             }
         });
-        jPanel5.add(btnViajesPorEscuelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 130, -1));
+        jPanel5.add(btnViajesPorEscuelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 280, -1));
         jPanel5.add(lblFondo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 840, 370));
 
         jTabbedPane1.addTab("Consultar Datos", jPanel5);
@@ -669,6 +669,7 @@ public class frmAdministrados extends javax.swing.JFrame {
        
         List<datoGrafico> infoDatos = usuario.infoGraficoCircular();
         Grafico temp = new Grafico();
+        System.out.println(infoDatos.size());
         temp.GenerarGrafico(infoDatos);
         
     }//GEN-LAST:event_btnViajesPorEscuelasActionPerformed

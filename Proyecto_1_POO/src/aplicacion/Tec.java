@@ -844,19 +844,21 @@ public class Tec {
         List<datoGrafico> salida = new ArrayList();
         boolean nuevo=true;
         for(Viaje auxiliar:viajes){
+            System.out.println("aqui");
             for(datoGrafico temporal:salida){
                 if(temporal.getInfo().equals(auxiliar.
                         getSolicitante().getDepartamento())){
                     temporal.setNumero(temporal.getNumero()+1);
                     nuevo=false;
                 }
-                if(nuevo){
+                
+            }
+            if(nuevo){
                 datoGrafico agregarDato = new datoGrafico();
                 agregarDato.setInfo(auxiliar.
                         getSolicitante().getDepartamento());
                 agregarDato.setNumero(1);
                 salida.add(agregarDato);
-            }
             }
             
         
