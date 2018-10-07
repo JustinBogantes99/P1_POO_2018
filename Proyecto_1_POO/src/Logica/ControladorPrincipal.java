@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import BotTelegram.MyAmazingBot;
 import UI.frmAdministrados;
 import UI.frmLogin;
 import UI.frmSecretaria;
@@ -15,6 +16,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 /**
  *
@@ -27,7 +31,8 @@ public class ControladorPrincipal {
     private frmLogin miVentanaLogeo;
     private frmSecretaria miVentanaSecretaria;
     private frmAdministrados miVentanaAdministrador;
-
+    private TelegramBotsApi botsApi = new TelegramBotsApi();
+    private MyAmazingBot boyBot = new MyAmazingBot();
     /*----------Constructor(es)----------*/
     /**
      * contructor default de la clase
@@ -55,6 +60,24 @@ public class ControladorPrincipal {
         this.miTec = miTec;
     }
 
+    public TelegramBotsApi getBotsApi() {
+        return botsApi;
+    }
+
+    public void setBotsApi(TelegramBotsApi botsApi) {
+        this.botsApi = botsApi;
+    }
+
+    public MyAmazingBot getBoyBot() {
+        return boyBot;
+    }
+
+    public void setBoyBot(MyAmazingBot boyBot) {
+        this.boyBot = boyBot;
+    }
+    
+    
+    
     /*----------Metodos Especiializados----------*/
     /**
      * Este metodo Carga la primera ventana del programa junto con la carga de
@@ -63,6 +86,17 @@ public class ControladorPrincipal {
     public void IniciarPrograma() {
         /*Cargar XML*/
         leerXML("src/XML/Datos.xml");
+        
+       /* ApiContextInitializer.init();
+        
+        // Instantiate Telegram Bots API
+       
+         try {
+            botsApi.registerBot(new MyAmazingBot());
+        } 
+        catch (TelegramApiException e) {e.printStackTrace();
+        }*/
+        
         CargarVentanaloggin();
 
     }

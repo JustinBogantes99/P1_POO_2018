@@ -5,6 +5,7 @@
  */
 package aplicacion;
 
+import Graficos.datoGrafico;
 import email.CreadorPDF;
 import email.EnviarCorreoAdjunto;
 import java.awt.HeadlessException;
@@ -477,7 +478,9 @@ public class Tec {
             if (temporal.getConsecutivo().equals(consecutivo)) {
                 if (temporal.getEstado().equals("Aprobado")) {
                     /*Aque irian el metodo de enviar mensaje a los interesados*/
-
+                    main.miControlador.getBoyBot().setMensajeSalida(
+                            "El viaje: "+temporal.getConsecutivo()+
+                             " fue Cancelado");
                 }
 
                 temporal.setEstado("Cancelado");
@@ -836,7 +839,32 @@ public class Tec {
 
         return true;
     }
-
+    /*----------Graficos----------*/
+    public List<datoGrafico> infoGraficoCircular(){
+        List<datoGrafico> salida = new ArrayList();
+        boolean nuevo=true;
+        for(Viaje auxiliar:viajes){
+            for(datoGrafico temporal:salida){
+                if(temporal.getInfo().equals(auxiliar.
+                        getSolicitante().getDepartamento())){
+                    temporal.setNumero(temporal.getNumero()+1);
+                    nuevo=false;
+                }
+                if(nuevo){
+                datoGrafico agregarDato = new datoGrafico();
+                agregarDato.setInfo(auxiliar.
+                        getSolicitante().getDepartamento());
+                agregarDato.setNumero(1);
+                salida.add(agregarDato);
+            }
+            }
+            
+        
+        }
+        
+        return salida;
+    }
+    
     /*----------Metodos especialisados U.I----------*/
 //----------Validar Usuario Administrador----------//
     /**

@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Graficos.Grafico;
+import Graficos.datoGrafico;
 import aplicacion.Administrador;
 import aplicacion.Chofer;
 import aplicacion.Licencia;
@@ -125,6 +127,7 @@ public class frmAdministrados extends javax.swing.JFrame {
         lblFondo5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnAtras = new javax.swing.JButton();
+        btnViajesPorEscuelas = new javax.swing.JButton();
         lblFondo6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -428,6 +431,14 @@ public class frmAdministrados extends javax.swing.JFrame {
             }
         });
         jPanel5.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 331, -1, -1));
+
+        btnViajesPorEscuelas.setText("Viajes Por Escuelas");
+        btnViajesPorEscuelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViajesPorEscuelasActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnViajesPorEscuelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 130, -1));
         jPanel5.add(lblFondo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 840, 370));
 
         jTabbedPane1.addTab("Consultar Datos", jPanel5);
@@ -654,6 +665,14 @@ public class frmAdministrados extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnRegistrarSecretariaActionPerformed
 
+    private void btnViajesPorEscuelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViajesPorEscuelasActionPerformed
+       
+        List<datoGrafico> infoDatos = usuario.infoGraficoCircular();
+        Grafico temp = new Grafico();
+        temp.GenerarGrafico(infoDatos);
+        
+    }//GEN-LAST:event_btnViajesPorEscuelasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -828,6 +847,7 @@ public class frmAdministrados extends javax.swing.JFrame {
     private javax.swing.JButton btnChoferQuitarLicencia;
     private javax.swing.JButton btnListarViajes;
     private javax.swing.JButton btnRegistrarSecretaria;
+    private javax.swing.JButton btnViajesPorEscuelas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

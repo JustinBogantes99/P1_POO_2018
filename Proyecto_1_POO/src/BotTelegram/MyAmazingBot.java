@@ -8,6 +8,16 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
  * @author Justin
  */
 public class MyAmazingBot extends TelegramLongPollingBot {
+    String mensajeSalida=":)";
+
+    public String getMensajeSalida() {
+        return mensajeSalida;
+    }
+
+    public void setMensajeSalida(String mensajeSalida) {
+        this.mensajeSalida = mensajeSalida;
+    }
+    
     
     @Override
     public void onUpdateReceived(Update update) {
@@ -16,7 +26,7 @@ public class MyAmazingBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             // Set variables
             
-            String message_text = "Puto el que lo lea"+1234;
+            String message_text = mensajeSalida;
             long chat_id = update.getMessage().getChatId();
 
             SendMessage message = new SendMessage() // Create a message object object

@@ -1,5 +1,7 @@
 package aplicacion;
 
+import Graficos.datoGrafico;
+import java.util.List;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -83,6 +85,10 @@ public class Administrador {
     
      public boolean AgregarSecretariaNUeva(Secretaria entrada) {
          return main.miControlador.getMiTec().AgregarSecretariaNUeva(entrada);
+     }
+     
+     public List<datoGrafico> infoGraficoCircular(){
+         return main.miControlador.getMiTec().infoGraficoCircular();
      }
      
     /*Consultar datos*/
